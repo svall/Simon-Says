@@ -6,13 +6,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 // setBoard() creates the board
 function setBoard() {
+  var colorsArray = ['red', 'green', 'blue', 'yellow'];
   for (var i = 0; i < 4; i++) {
-    var colorsArray = ['red', 'green', 'blue', 'yellow'];
+    // var colorsArray = ['red', 'green', 'blue', 'yellow'];
     // var colorToAdd = colorsArray[i];
     console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i + 1) + '</div>');
     $('.colorBox')[i].setAttribute('id', 'box' + (i + 1));
-    $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[i]);
+
+    var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
+    $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
+    colorsArray.splice(randNum,1);
+    console.log(colorsArray);
 
     // shuffleColor();
   }
