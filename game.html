@@ -12,21 +12,25 @@
       <a href="landing.html">HOME</a>
     </header>
     <div class="board">
-      <main id="container">
-        <div class="colorBox" id="box1">COLOR 1</div>
-        <div class="colorBox" id="box2">COLOR 2</div>
-        <div class="colorBox" id="box3">COLOR 3</div>
-        <div class="colorBox" id="box4">COLOR 4</div>
+      <main id="containerMain">
+        <div id="colorContainer">
+          <div class="colorBox" id="box1">COLOR 1</div>
+          <div class="colorBox" id="box2">COLOR 2</div>
+          <div class="colorBox" id="box3">COLOR 3</div>
+          <div class="colorBox" id="box4">COLOR 4</div>
+        </div>
       </main>
-      <aside class="asideInfo">
-        <div>
-          <label>Player
+      <aside class="containerAside">
+        <div id="asideInfoBoxes">
+          <button type="submit" id="startGameBtn">Start</button>
+          <button type="submit">Reset</button><br>
+          <label>Player<br>
             <input type="text" class="playerInfo" name="playername">
           </label><br>
-          <label>Mode
+          <label>Mode<br>
             <input type="text" class="playerInfo" name="mode">
           </label><br>
-          <label>Level
+          <label>Level<br>
             <input type="text" class="playerInfo" name="level">
           </label>
         </div>
