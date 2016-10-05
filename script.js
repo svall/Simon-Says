@@ -111,17 +111,29 @@ function playerSequenceInput(event) {
   checkPlayerInput();
 }
 
+
 // checkPlayerInput() checks the sequence given vs. sequence typed by player
 function checkPlayerInput() {
+  var correctCounter = 0;
   for (var i = 0; i < colorsPlayerBoxID.length; i++) {
-    if (colorsPlayerBoxID[i] === colorsDisplayed[i]) {
-      console.log('ok color');
-    } else {
+    if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
+      console.log('WRONG COLOR');
       alert('WRONG COLOR');
+      resetSequence();
+    }
+    if (colorsPlayerBoxID[i] === colorsDisplayed[i]) {
+      correctCounter++;
+    }
+    if (correctCounter === colorsDisplayed.length) {
+      console.log('CORRECT - NEXT LEVEL');
+      alert('CORRECT - NEXT LEVEL');
+      resetSequence();
+      // nextLevel();
     }
   }
 }
 
+// resetSequence() resets the sequence arrays displayed and entered
 function resetSequence() {
   colorsDisplayed = [];
   colorsPlayer1 = [];
