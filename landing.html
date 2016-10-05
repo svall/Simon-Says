@@ -20,12 +20,12 @@
       </div>
     </header>
   </div>
-  <input type="button" class="buttonLP" id="buttonLPMP" name="multiPlayerBtn" />
-  <input type="button" class="buttonLP" id="buttonLPMP" name="singlePlayerBtn" />
+  <<button type="submit" class="buttonsLP" id="buttonLPSP" name="singlePlayerBtn">Single-Player</button>
+  <button type="submit" class="buttonsLP" id="buttonLPMP" name="multiPlayerBtn">Multi-Player</button>
   <div id="formContainerLP"> <!-- for buttons with images, links to other pages -->
-    <form id="singlePlayerInfo" name="singlePlayer" action="landing_submit" method="get" accept-charset="utf-8">
+    <form id="singlePlayerForm" class="formsLP" name="singlePlayer" action="game.html" method="get" accept-charset="utf-8">
       <label>Player Name:<br>
-        <input type="text" name="playername" />
+        <input type="text" name="playername" /><br>
       </label>
       <label>Select Game Mode:<br>
         <select name="modeOptions">
@@ -33,15 +33,16 @@
           <option value="beginner">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="extreme">Extreme</option>
-        </select>
+        </select><br>
+        <button type="submit" class="buttonsPlayLP">PLAY</button>
       </label>
     </form>
-    <form id="multiPlayerInfo" name="multiPlayer" action="landing_submit" method="get" accept-charset="utf-8">
+    <form id="multiPlayerForm" class="formsLP" name="multiPlayer" action="game.html" method="get" accept-charset="utf-8">
       <label>Player 1 Name:<br>
-        <input type="text" name="player1name" />
+        <input type="text" name="player1name" /><br>
       </label>
       <label>Player 2 Name:<br>
-        <input type="text" name="player2name" />
+        <input type="text" name="player2name" /><br>
       </label>
       <label>Select Game Mode:<br>
         <select name="modeOptions">
@@ -49,7 +50,8 @@
           <option value="beginner">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="extreme">Extreme</option>
-        </select>
+        </select><br>
+        <button type="submit" class="buttonsPlayLP">PLAY</button>
       </label>
     </form>
   </div>

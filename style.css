@@ -14,24 +14,44 @@ a {
 label {
   color: white;
 }
-
-/*form to select # of players*/
-#formContainerLP {
-  height: 200px;
-  width: 150px;
-  position: relative;
+/*LP - main buttons*/
+.buttonsLP {
+  border: 2px solid;
+  height: 60px;
+  width: 200px;
+  font-size: 30px;
+  padding: 10px;
+  margin: 0;
 }
-#singlePlayerInfo {
+/*LP - form to select # of players*/
+#formContainerLP {
+  height: 280px;
+  width: 400px;
+  position: relative;
+  margin-left: 11px;
+  margin-top: -1px;
+  text-align: center;
+  font-size: 30px;
+}
+#singlePlayerForm {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: lightgreen;
+  display: none;
 }
-#multiPlayerInfo {
+#multiPlayerForm {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: lightblue;
+  display: none;
+}
+.buttonsPlayLP {
+  height: 40px;
+  width: 70px;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
 

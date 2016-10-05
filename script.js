@@ -1,3 +1,28 @@
+// Susana Isaza - Simon Says
+
+// FUNCTIONS:
+
+// Landing Page:
+// opens single/multi-player option when corresponding button is clicked
+function stayOnSinglePlayer() {
+  $('#singlePlayerForm').toggle();
+}
+function stayOnSPForm() {
+  $('#singlePlayerForm').show();
+}
+function leaveSinglePlayer() {
+  $('#singlePlayerInfo').toggle();
+}
+function stayOnMultiPlayer() {
+  $('#multiPlayerForm').toggle();
+}
+function stayOnMPForm() {
+  $('#multiPlayerForm').show();
+}
+function leaveMultiPlayer() {
+  $('#multiPlayerInfo').hide();
+}
+
 
 // setBoard() creates the board, assigns random colors
 function setBoard() {
@@ -14,10 +39,19 @@ function setBoard() {
 }
 
 
-
-
-
-document.addEventListener("DOMContentLoaded", function(event) {
+// EVENTS:
+$('document').ready(function() {
   console.log('DOM Loaded ok!');
-  $('#startGameBtn').click(setBoard);
+  // Landing Page
+  $('#buttonLPSP').on('click', stayOnSinglePlayer);
+  $('#singlePlayerForm').on('mouseover', stayOnSPForm);
+  $('#singlePlayerForm').on('mouseleave', leaveSinglePlayer);
+  // $('#buttonLPMP').on('mouseout', leaveSinglePlayer);
+  $('#buttonLPMP').on('click', stayOnMultiPlayer);
+  $('#multiPlayerForm').on('mouseover', stayOnMPForm);
+  $('#multiPlayerForm').on('mouseout', leaveMultiPlayer);
+  // $('#buttonLPMP').on('mouseout', leaveMultiPlayer);
+
+  // Game Page
+  $('#startGameBtn').on('click', setBoard);
 });
