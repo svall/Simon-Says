@@ -34,7 +34,7 @@ function leaveMultiPlayer() {
 //   }
 // }
 
-var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
+var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
 // setBoard() creates the board, assigns random colors
 function setBoard() {
   // var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
@@ -50,7 +50,7 @@ function setBoard() {
   randomColorSequence();
 }
 
-// color displays per level
+// number of color sequences displayed per level
 var levelTimes = {
   l1: 6,
   l2: 8,
@@ -63,10 +63,8 @@ var levelTimes = {
   l9: 22,
   l10: 24
 };
-
 // color sequence variables
 var colorsDisplayed = [];
-// var colorsDisplayedBoxID = [];
 var colorsPlayer1 = [];
 var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
@@ -111,7 +109,6 @@ function playerSequenceInput(event) {
   checkPlayerInput();
 }
 
-
 // checkPlayerInput() checks the sequence given vs. sequence typed by player
 function checkPlayerInput() {
   var correctCounter = 0;
@@ -141,13 +138,11 @@ function resetSequence() {
   colorsPlayer2 = [];
 }
 
-
 // popColors() changes the opacity of divs hovered over
 // function popColors(event) {
 //   var colorBoxes = $('.colorBox');  // colorBox array
 //   colorBoxes.eq(this).animate({opacity: '1'}, 500);
 // }
-
 
 // EVENTS:
 $('document').ready(function() {
