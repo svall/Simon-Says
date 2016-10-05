@@ -24,33 +24,20 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
-//
+// autoFill() adds values from landing form to corresponding place
+// function autoFill () {
+//   var formSelections = window.location.search.substring(1).split("&");
+//   if(formSelections.length === 2) {
+//     var playername = formSelections[1].split('=');
+//     // var gamemode = formSelections[2].split('=');
+//     $('#playername').setAttribute('value', playername[1]);
+//   }
+// }
 
-function autoFill () {
-  var formSelections = window.location.search.substring(1).split("&");
-  if(formSelections.length === 2) {
-    var playername = formSelections[1].split('=');
-    // var gamemode = formSelections[2].split('=');
-    $('#playername').setAttribute('value', playername[1]);
-
-
-  }
-  // var playersInfo = {};
-  // for (var i = 0; i < formSelections.length; i++) {
-  //   var info = formSelections[i].split('=');
-  //   playersInfo.add(info[0] + ': ' + info[1]);
-  //   // playersInfo += info[0] + ': ' + info[1] + ', ';
-  //   console.log(playersInfo);
-  // }
-  // console.log(playersInfo.playername);
-
-}
-
-
-
+var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
 // setBoard() creates the board, assigns random colors
 function setBoard() {
-  var colorsArray = ['red', 'green', 'blue', 'yellow'];
+  // var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
   for (var i = 0; i < 4; i++) { // 4 needs to change to the # of colors pending mode selection
     console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i + 1) + '</div>');
@@ -60,13 +47,53 @@ function setBoard() {
     colorsArray.splice(randNum,1);
     console.log(colorsArray);
   }
+  randomCombo();
+}
+
+// color displays per level
+var levelTimes = {
+  l1: 6,
+  l2: 8,
+  l3: 10,
+  l4: 12,
+  l5: 14,
+  l6: 16,
+  l7: 18,
+  l8: 20,
+  l9: 22,
+  l10: 24
+};
+
+  var colorsDisplayed = [];
+
+
+// randomCombo() displays the random combination of colors, with 1 sec delay from click
+function randomCombo() {
+  console.log('click works');
+  // var colorsDisplayed = [];
+
+  for (var i = 1; i <= levelTimes.l1; i++) {
+    setTimeout (function() {
+      var colorBoxes = $('.colorBox');  // colorBox array
+      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-4
+      console.log(randNum);
+      // $('.colorBox').eq(randNum).css('box-shadow', '0 10px 50px 20px red');
+      colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
+      colorBoxes.eq(randNum).animate({opacity: '0.15'}, 500);
+      colorsDisplayed.push(randNum);
+      // console.log(colorsDisplayed);
+    }, 1000 * i);
+    // console.log(colorsDisplayed);
+  }
+  console.log(colorsDisplayed);
 }
 
 
 // EVENTS:
 $('document').ready(function() {
   console.log('DOM Loaded ok!');
-  // Landing Page
+
+  // LANDING PAGE:
   $('#buttonLPSP').on('click', stayOnSinglePlayer);
   $('#singlePlayerForm').on('mouseover', stayOnSPForm);
   $('#singlePlayerForm').on('mouseleave', leaveSinglePlayer);
@@ -76,6 +103,7 @@ $('document').ready(function() {
   $('#multiPlayerForm').on('mouseout', leaveMultiPlayer);
   // $('#buttonLPMP').on('mouseout', leaveMultiPlayer);
 
-  // Game Page
+  // GAME PAGE:
+  // autoFill();
   $('#startGameBtn').on('click', setBoard);
 });
