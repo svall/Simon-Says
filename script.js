@@ -66,9 +66,10 @@ var levelTimes = {
 
 // color sequence variables
 var colorsDisplayed = [];
+// var colorsDisplayedBoxID = [];
 var colorsPlayer1 = [];
+var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
-
 
 // randomCombo() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
@@ -86,15 +87,54 @@ function randomColorSequence() {
     }, 1000 * i);
   }
   console.log(colorsDisplayed);
+  $('.colorBox').on('click', playerSequenceInput);
 }
 
 // playerSequenceInput() saves the click inputs the player makes
-function playerSequenceInput() {
-  console.log('playerseq. works')
-//   console.log(this.id)
-//   // colorsPlayer1.push(this.id)
-//   // console.log(this.id)
+function playerSequenceInput(event) {
+  // console.log('playerseq. works');
+  switch (this.id) {
+    case 'box1':
+      colorsPlayerBoxID.push(0);
+      break;
+    case 'box2':
+      colorsPlayerBoxID.push(1);
+      break;
+    case 'box3':
+      colorsPlayerBoxID.push(2);
+      break;
+    case 'box4':
+      colorsPlayerBoxID.push(3);
+      break;
+  }
+  console.log(colorsPlayerBoxID);
+  checkPlayerInput();
 }
+
+// checkPlayerInput() checks the sequence given vs. sequence typed by player
+function checkPlayerInput() {
+  for (var i = 0; i < colorsPlayerBoxID.length; i++) {
+    if (colorsPlayerBoxID[i] === colorsDisplayed[i]) {
+      console.log('ok color');
+    } else {
+      alert('WRONG COLOR');
+    }
+  }
+}
+
+function resetSequence() {
+  colorsDisplayed = [];
+  colorsPlayer1 = [];
+  colorsPlayerBoxID = [];
+  colorsPlayer2 = [];
+}
+
+
+// popColors() changes the opacity of divs hovered over
+// function popColors(event) {
+//   var colorBoxes = $('.colorBox');  // colorBox array
+//   colorBoxes.eq(this).animate({opacity: '1'}, 500);
+// }
 
 
 // EVENTS:
@@ -114,5 +154,6 @@ $('document').ready(function() {
   // GAME PAGE:
   // autoFill();
   $('#startGameBtn').on('click', setBoard);
-  $('.colorBox').on('click', playerSequenceInput);
+  // $('.colorBox').on('mouseover', popColors);
+  // $('.colorBox').on('click', playerSequenceInput);
 });
