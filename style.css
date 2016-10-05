@@ -2,7 +2,7 @@ body {
   background-color: black;
 }
 
-.header {
+.headers {
   color: white;
   text-align: center;
 }
@@ -15,21 +15,41 @@ label {
   color: white;
 }
 
+/*form to select # of players*/
+#formContainerLP {
+  height: 200px;
+  width: 150px;
+  position: relative;
+}
+#singlePlayerInfo {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: lightgreen;
+}
+#multiPlayerInfo {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: lightblue;
+}
+
+
 .board {
   width: 95%;
   height: 95%;
-  background-color: green;
+  /*background-color: green;*/
 }
 /*Player info box on the right side of the game*/
 .containerAside {
   display: inline-block;
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
   width: 30%;
   float: right;
 }
 
 #asideInfoBoxes {
-  background-color: red;
+  /*background-color: red;*/
 }
 
 .playerInfo {
@@ -38,14 +58,14 @@ label {
 
 /*game area*/
 #containerMain {
-  background-color: lightblue;
+  /*background-color: lightblue;*/
   display: inline-block;
   width: 50%;
   height: 90%;
 }
 
 #colorContainer {
-  background-color: yellow;
+  /*background-color: yellow;*/
   height: 75%;
   width: 60%;
   margin: auto;
@@ -58,22 +78,10 @@ label {
 }
 
 .colorBox {
-  background-color: blue;
+  /*background-color: blue;*/
   height:80px;
   width: 80px;
   border: 2px solid black;
-  line-height: 90px;
+  line-height: 80px;
 }
 
-/*#box1 {
-  background-color: red;
-}
-#box2 {
-  background-color: blue;
-}
-#box3 {
-  background-color: green;
-}
-#box4 {
-  background-color: yellow;
-}*/
