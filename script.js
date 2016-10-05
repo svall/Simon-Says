@@ -2,7 +2,7 @@
 
 // FUNCTIONS:
 
-// Landing Page:
+// LANDING PAGE:
 // opens single/multi-player option when corresponding button is clicked
 function stayOnSinglePlayer() {
   $('#singlePlayerForm').toggle();
@@ -22,6 +22,30 @@ function stayOnMPForm() {
 function leaveMultiPlayer() {
   $('#multiPlayerInfo').hide();
 }
+
+// GAME PAGE:
+//
+
+function autoFill () {
+  var formSelections = window.location.search.substring(1).split("&");
+  if(formSelections.length === 2) {
+    var playername = formSelections[1].split('=');
+    // var gamemode = formSelections[2].split('=');
+    $('#playername').setAttribute('value', playername[1]);
+
+
+  }
+  // var playersInfo = {};
+  // for (var i = 0; i < formSelections.length; i++) {
+  //   var info = formSelections[i].split('=');
+  //   playersInfo.add(info[0] + ': ' + info[1]);
+  //   // playersInfo += info[0] + ': ' + info[1] + ', ';
+  //   console.log(playersInfo);
+  // }
+  // console.log(playersInfo.playername);
+
+}
+
 
 
 // setBoard() creates the board, assigns random colors
