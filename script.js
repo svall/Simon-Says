@@ -39,15 +39,15 @@ var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', '
 function setBoard() {
   // var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
   for (var i = 0; i < 4; i++) { // 4 needs to change to the # of colors pending mode selection
-    console.log('startGameBtn working');
+    // console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i + 1) + '</div>');
     $('.colorBox')[i].setAttribute('id', 'box' + (i + 1));
     var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
     $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
     colorsArray.splice(randNum,1);
-    console.log(colorsArray);
+    // console.log(colorsArray);
   }
-  randomCombo();
+  randomColorSequence();
 }
 
 // color displays per level
@@ -64,14 +64,16 @@ var levelTimes = {
   l10: 24
 };
 
-  var colorsDisplayed = [];
+// color sequence variables
+var colorsDisplayed = [];
+var colorsPlayer1 = [];
+var colorsPlayer2 = [];
 
 
 // randomCombo() displays the random combination of colors, with 1 sec delay from click
-function randomCombo() {
-  console.log('click works');
+function randomColorSequence() {
+  // console.log('click works');
   // var colorsDisplayed = [];
-
   for (var i = 1; i <= levelTimes.l1; i++) {
     setTimeout (function() {
       var colorBoxes = $('.colorBox');  // colorBox array
@@ -81,17 +83,23 @@ function randomCombo() {
       colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
       colorBoxes.eq(randNum).animate({opacity: '0.15'}, 500);
       colorsDisplayed.push(randNum);
-      // console.log(colorsDisplayed);
     }, 1000 * i);
-    // console.log(colorsDisplayed);
   }
   console.log(colorsDisplayed);
+}
+
+// playerSequenceInput() saves the click inputs the player makes
+function playerSequenceInput() {
+  console.log('playerseq. works')
+//   console.log(this.id)
+//   // colorsPlayer1.push(this.id)
+//   // console.log(this.id)
 }
 
 
 // EVENTS:
 $('document').ready(function() {
-  console.log('DOM Loaded ok!');
+  // console.log('DOM Loaded ok!');
 
   // LANDING PAGE:
   $('#buttonLPSP').on('click', stayOnSinglePlayer);
@@ -106,4 +114,5 @@ $('document').ready(function() {
   // GAME PAGE:
   // autoFill();
   $('#startGameBtn').on('click', setBoard);
+  $('.colorBox').on('click', playerSequenceInput);
 });
