@@ -25,14 +25,16 @@ function leaveMultiPlayer() {
 
 // GAME PAGE:
 // autoFill() adds values from landing form to corresponding place
-// function autoFill () {
-//   var formSelections = window.location.search.substring(1).split("&");
-//   if(formSelections.length === 2) {
-//     var playername = formSelections[1].split('=');
-//     // var gamemode = formSelections[2].split('=');
-//     $('#playername').setAttribute('value', playername[1]);
-//   }
-// }
+function autoFill () {
+  var formSelections = window.location.search.substring(1).split("&");
+  if(formSelections.length === 2) {
+    var playerName = formSelections[0].split('=');
+    var gameMode = formSelections[1].split('=');
+    $('#playerName').text(playerName[1]);
+    $('#modeOptions').text(gameMode[1]);
+
+  }
+}
 
 var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
 // setBoard() creates the board, assigns random colors
@@ -54,7 +56,7 @@ function setBoard() {
     $('.colorBox')[i].setAttribute('id', 'box' + (i + 1));
     var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
     $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
-    colorsArray.splice(randNum,1);
+    colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
     // console.log(colorsArray);
   }
   randomColorSequence();
@@ -171,7 +173,7 @@ $('document').ready(function() {
   // $('#buttonLPMP').on('mouseout', leaveMultiPlayer);
 
   // GAME PAGE:
-  // autoFill();
+  autoFill();
   $('#startGameBtn').on('click', setBoard);
   // $('.colorBox').on('mouseover', popColors);
   // $('.colorBox').on('click', playerSequenceInput);

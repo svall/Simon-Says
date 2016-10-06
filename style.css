@@ -71,9 +71,12 @@ label {
 #asideInfoBoxes {
   /*background-color: red;*/
 }
+.asidePlayerInfo {
+  margin-top: 20px;
+}
 
 .playerInfo {
-  text-align: right;
+  text-align: center;
 }
 
 /*game area*/
