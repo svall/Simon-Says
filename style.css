@@ -70,13 +70,26 @@ label {
 
 #asideInfoBoxes {
   /*background-color: red;*/
+  font-size: 30px;
 }
+
+.labelsGP {
+  display: block;
+  text-align: center
+  /*height:35px;*/
+}
+
 .asidePlayerInfo {
   margin-top: 20px;
+  padding-top: 5%;
+  border: 2px solid white;
 }
 
 .playerInfo {
   text-align: center;
+  color: grey;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 /*game area*/
