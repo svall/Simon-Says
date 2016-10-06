@@ -27,7 +27,7 @@ function leaveMultiPlayer() {
 
 // variables used to set up the board:
 var modes = ['beginner', 'intermediate', 'extreme'];
-var size = [4, 9, 16];
+var size = [4, 9, 9];
 var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white', 'orange'];
 var boardSize;
 
@@ -51,6 +51,9 @@ function autoFill () {
 function setBoard() {
   // boardSize = 4; // NEED TO MAKE SCALABLE
   // for (var i = 0; i < (boardSize / 2); i++) { // 4 needs to change to the # of colors pending mode selection
+  if($('#modeOptions').text() === 'extreme') {
+    $('.timerDisplay').css('display', 'in-line');;
+  }
   for (var i = 0; i < (boardSize); i++) {
     console.log('startGameBtn working');
     // $('#colorContainer').append('<tr class="tableRow"></tr>');
