@@ -84,7 +84,6 @@ var colorsPlayer2 = [];
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
-  // var colorsDisplayed = [];
   for (var i = 1; i <= levelTimes.l1; i++) {
     setTimeout (function() {
       var colorBoxes = $('.colorBox');  // colorBox array
@@ -97,16 +96,25 @@ function randomColorSequence() {
     }, 1000 * i);
   }
   console.log(colorsDisplayed);
-  $('.colorBox').mouseover(lightAllBoxes)
-  //   console.log('animation click works');
-  //   this.animate({opacity: '1'}, 500);
-  //   });
+  lightHoverDelay();
   $('.colorBox').on('click', playerSequenceInput);
 }
 
-function lightAllBoxes(event) {
-    console.log('animation click works');
-    $('.colorBox').animate({opacity: '1'}, 500);
+// lightHoverDelay() activates the hover effect after the sequence is displayed
+function lightHoverDelay() {
+  setTimeout(lightBoxes, levelTimes.l1 * 1000); // need to change l1!!!
+}
+
+// lightBoxes() changes opacity of boxes hovered over
+function lightBoxes() {
+  $('.colorBox').mouseover(function(event) {
+      // console.log('animation click works');
+      $(this).css('opacity', '1');
+  });
+  $('.colorBox').mouseout(function(event) {
+    // console.log('animation click works');
+    $(this).css('opacity', '0.15');
+  });
 }
 
 // playerSequenceInput() saves the click inputs the player makes
