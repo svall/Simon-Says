@@ -32,7 +32,6 @@ function autoFill () {
     var gameMode = formSelections[1].split('=');
     $('#playerName').text(playerName[1]);
     $('#modeOptions').text(gameMode[1]);
-
   }
 }
 
@@ -82,7 +81,7 @@ var colorsPlayer1 = [];
 var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
 
-// randomCombo() displays the random combination of colors, with 1 sec delay from click
+// randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
   // var colorsDisplayed = [];
@@ -98,7 +97,16 @@ function randomColorSequence() {
     }, 1000 * i);
   }
   console.log(colorsDisplayed);
+  $('.colorBox').mouseover(lightAllBoxes)
+  //   console.log('animation click works');
+  //   this.animate({opacity: '1'}, 500);
+  //   });
   $('.colorBox').on('click', playerSequenceInput);
+}
+
+function lightAllBoxes(event) {
+    console.log('animation click works');
+    $('.colorBox').animate({opacity: '1'}, 500);
 }
 
 // playerSequenceInput() saves the click inputs the player makes
