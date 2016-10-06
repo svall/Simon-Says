@@ -8,8 +8,8 @@
   </head>
   <body>
     <header>
-      <h1 class="headers">SIMON SAYS</h1>
       <a href="landing.html">HOME</a>
+      <h1 class="headers">SIMON SAYS</h1>
     </header>
     <div class="board">
       <main id="containerMain">
@@ -18,8 +18,10 @@
       </main>
       <aside class="containerAside">
         <div id="asideInfoBoxes">
-          <button type="submit" id="startGameBtn">Start</button>
-          <button type="submit" id="resetGameBtn">Reset</button><br>
+          <div class="allButtonsGP">
+            <button type="submit" class="buttonsGP" id="startGameBtn">Start</button>
+            <button type="submit" class="buttonsGP" id="resetGameBtn">Reset</button><br>
+          </div>
           <div class="asidePlayerInfo">
             <label class="labelsGP">Player
               <h3 class="playerInfo" id="playerName">Name</h3>
@@ -27,7 +29,9 @@
             <label class="labelsGP">Mode
               <h3 class="playerInfo" id="modeOptions">Mode</h3>
             </label class="labelsGP"><br>
-            <h3 class="headers" id="levelDisplay">1</h3>
+            <label class="labelsGP">Level
+              <h3 id="levelDisplay">1</h3>
+            </label>
           </div>
         </div>
       </aside>
