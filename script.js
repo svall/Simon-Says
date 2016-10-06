@@ -35,7 +35,12 @@ function autoFill () {
   }
 }
 
+var modes = {
+  intensity: ['beginner', 'intermediate', 'advanced'],
+  boardSize: [4, 8, 16]
+};
 var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
+
 // setBoard() creates the board, assigns random colors
 function setBoard() {
   var boardSize = 4;
@@ -105,7 +110,7 @@ function randomColorSequence() {
 
 // lightHoverDelay() activates the hover effect after the sequence is displayed
 function lightHoverDelay() {
-  setTimeout(lightBoxes, levelTimes.l1 * 1000); // need to change l1!!!
+  setTimeout(lightBoxes, sequenceLength * 1000); // need to change l1!!!
 }
 
 // lightBoxes() changes opacity of boxes hovered over
@@ -173,14 +178,49 @@ function resetSequence() {
 
 // nextLevel() moves the player to the next level sequence
 function nextLevel() {
-  // levelDisplayed = $('#levelDisplay').text(1);
-  // var levelCounter = 1;
   var level = parseInt($('#levelDisplay').text()); // level text
   console.log(level); // need to fix '1', switch?
   var newLevel = level + 1;
   console.log(newLevel);
   $('#levelDisplay').text(level + 1);
-  // levelCounter +=1;
+  sequenceIncrement();
+}
+
+// sequenceIncrement() increments each level by 2 the sequence that will desplay
+function sequenceIncrement() {
+  var level = parseInt($('#levelDisplay').text());
+  switch(level) {
+    case 2:
+      sequenceLength = levelTimes.l2;
+      break;
+    case 3:
+      sequenceLength = levelTimes.l3;
+      break;
+    case 4:
+      sequenceLength = levelTimes.l4;
+      break;
+    case 5:
+      sequenceLength = levelTimes.l5;
+      break;
+    case 6:
+      sequenceLength = levelTimes.l6;
+      break;
+    case 7:
+      sequenceLength = levelTimes.l7;
+      break;
+    case 8:
+      sequenceLength = levelTimes.l8;
+      break;
+    case 9:
+      sequenceLength = levelTimes.l9;
+      break;
+    case 10:
+      sequenceLength = levelTimes.l10;
+      break;
+    default:
+      sequenceLength = levelTimes.l1;
+  }
+  console.log(sequenceLength);
 }
 
 
