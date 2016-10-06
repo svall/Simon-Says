@@ -24,6 +24,13 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
+
+// variables used to set up the board:
+var modes = ['beginner', 'intermediate', 'extreme'];
+var size = [4, 8, 16];
+var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
+var boardSize;
+
 // autoFill() adds values from landing form to corresponding place in game page
 function autoFill () {
   var formSelections = window.location.search.substring(1).split("&");
@@ -33,35 +40,32 @@ function autoFill () {
     $('#playerName').text(playerName[1]);
     $('#modeOptions').text(gameMode[1]);
   }
+  for(var i = 0; i < modes.length; i++) {
+    if (gameMode[1] === modes[i]) {
+      boardSize = size[i];
+    }
+  }
 }
-
-// variables used to set up the board:
-var modes = {
-  intensity: ['beginner', 'intermediate', 'advanced'],
-  boardSize: [4, 8, 16]
-  };
-var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
 
 // setBoard() creates the board, assigns random colors
 function setBoard() {
-  var boardSize = 4; // NEED TO MAKE SCALABLE
-  // var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
+  // boardSize = 4; // NEED TO MAKE SCALABLE
   // for (var i = 0; i < (boardSize / 2); i++) { // 4 needs to change to the # of colors pending mode selection
   for (var i = 0; i < (boardSize); i++) {
     console.log('startGameBtn working');
-    // $('#colorContainer').append('<tr class="tableRow"></tr>');
-    // for (var j = 0; j < (boardSize / 2); i++) {
-    //   $('tableRow').append('<td class="colorBox">COLOR' + (j + 1) + '</td>');
-    //   // $('.colorBox').eq(j).setAttribute('id', 'box' + (j + 1));
-    //   var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
-    //   $('.colorBox').eq(j).css('background-color', colorsArray[randNum]);
-    //   colorsArray.splice(randNum,1);
-    // }
-    $('#colorContainer').append('<div class="colorBox">COLOR' + (i + 1) + '</div>');
-    $('.colorBox')[i].setAttribute('id', 'box' + (i + 1));
-    var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
-    $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
-    colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
+    $('#colorContainer').append('<tr class="tableRow"></tr>');
+    for (var j = 0; j < (boardSize / 2); i++) {
+      $('tableRow').append('<td class="colorBox">COLOR' + (j + 1) + '</td>');
+      // $('.colorBox').eq(j).setAttribute('id', 'box' + (j + 1));
+      var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
+      $('.colorBox').eq(j).css('background-color', colorsArray[randNum]);
+      colorsArray.splice(randNum,1);
+    }
+    // $('#colorContainer').append('<div class="colorBox">COLOR' + (i + 1) + '</div>');
+    // $('.colorBox')[i].setAttribute('id', 'box' + (i + 1));
+    // var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
+    // $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
+    // colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
     // console.log(colorsArray);
   }
   randomColorSequence();
@@ -141,6 +145,18 @@ function playerSequenceInput(event) {
       break;
     case 'box4':
       colorsPlayerBoxID.push(3);
+      break;
+    case 'box5':
+      colorsPlayerBoxID.push(5);
+      break;
+    case 'box6':
+      colorsPlayerBoxID.push(6);
+      break;
+    case 'box7':
+      colorsPlayerBoxID.push(7);
+      break;
+    case 'box8':
+      colorsPlayerBoxID.push(8);
       break;
   }
   console.log(colorsPlayerBoxID);
