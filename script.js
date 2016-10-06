@@ -87,12 +87,14 @@ var colorsDisplayed = [];
 var colorsPlayer1 = [];
 var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
+var t;
 
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
   for (var i = 1; i <= sequenceLength; i++) {
-    setTimeout (function() {
+    t = setTimeout (function() {
+    // setTimeout (function() {
       var colorBoxes = $('.colorBox');  // colorBox array
       var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-4
       console.log(randNum);
@@ -175,12 +177,14 @@ function resetSequence() {
   colorsPlayerBoxID = [];
   colorsPlayer2 = [];
   $('.colorBox').remove();
+  clearTimeout(t);
+  colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
 }
 
 // nextLevel() moves the player to the next level sequence
 function nextLevel() {
   var level = parseInt($('#levelDisplay').text()); // level text
-  console.log(level); // need to fix '1', switch?
+  console.log(level);
   var newLevel = level + 1;
   console.log(newLevel);
   $('#levelDisplay').text(level + 1);
