@@ -24,7 +24,7 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
-// autoFill() adds values from landing form to corresponding place
+// autoFill() adds values from landing form to corresponding place in game page
 function autoFill () {
   var formSelections = window.location.search.substring(1).split("&");
   if(formSelections.length === 2) {
@@ -35,15 +35,16 @@ function autoFill () {
   }
 }
 
+// variables used to set up the board:
 var modes = {
   intensity: ['beginner', 'intermediate', 'advanced'],
   boardSize: [4, 8, 16]
-};
+  };
 var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white'];
 
 // setBoard() creates the board, assigns random colors
 function setBoard() {
-  var boardSize = 4;
+  var boardSize = 4; // NEED TO MAKE SCALABLE
   // var colorsArray = ['red', 'green', 'blue', 'yellow', 'purple', 'grey', 'pink', 'white'];
   // for (var i = 0; i < (boardSize / 2); i++) { // 4 needs to change to the # of colors pending mode selection
   for (var i = 0; i < (boardSize); i++) {
@@ -78,12 +79,10 @@ var levelTimes = {
   l8: 20,
   l9: 22,
   l10: 24
-};
+  };
 var sequenceLength = levelTimes.l1;
-// var levelDisplayed = $('#levelDisplay').text(2);
-// var levelDisplayed = 1;
 
-// color sequence variables
+// variables that store the color sequences given to and entered by player
 var colorsDisplayed = [];
 var colorsPlayer1 = [];
 var colorsPlayerBoxID = [];
@@ -110,7 +109,7 @@ function randomColorSequence() {
 
 // lightHoverDelay() activates the hover effect after the sequence is displayed
 function lightHoverDelay() {
-  setTimeout(lightBoxes, sequenceLength * 1000); // need to change l1!!!
+  setTimeout(lightBoxes, sequenceLength * 1000);
 }
 
 // lightBoxes() changes opacity of boxes hovered over
@@ -163,17 +162,19 @@ function checkPlayerInput() {
       alert('CORRECT - NEXT LEVEL');
       resetSequence();
       nextLevel();
+      setBoard();
     }
   }
 }
 
-// resetSequence() resets the sequence arrays displayed and entered
+// resetSequence() clers board and resets the sequence arrays displayed and entered
 function resetSequence() {
   console.log('reset btn');
   colorsDisplayed = [];
   colorsPlayer1 = [];
   colorsPlayerBoxID = [];
   colorsPlayer2 = [];
+  $('.colorBox').remove();
 }
 
 // nextLevel() moves the player to the next level sequence
