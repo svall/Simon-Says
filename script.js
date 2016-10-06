@@ -61,8 +61,7 @@ function setBoard() {
   randomColorSequence();
 }
 
-
-// number of color sequences displayed per level
+// level variables, number of color sequences displayed per level
 var levelTimes = {
   l1: 6,
   l2: 8,
@@ -75,6 +74,10 @@ var levelTimes = {
   l9: 22,
   l10: 24
 };
+var sequenceLength = levelTimes.l1;
+// var levelDisplayed = $('#levelDisplay').text(2);
+// var levelDisplayed = 1;
+
 // color sequence variables
 var colorsDisplayed = [];
 var colorsPlayer1 = [];
@@ -84,7 +87,7 @@ var colorsPlayer2 = [];
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
-  for (var i = 1; i <= levelTimes.l1; i++) {
+  for (var i = 1; i <= sequenceLength; i++) {
     setTimeout (function() {
       var colorBoxes = $('.colorBox');  // colorBox array
       var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-4
@@ -154,7 +157,7 @@ function checkPlayerInput() {
       console.log('CORRECT - NEXT LEVEL');
       alert('CORRECT - NEXT LEVEL');
       resetSequence();
-      // nextLevel();
+      nextLevel();
     }
   }
 }
@@ -168,11 +171,18 @@ function resetSequence() {
   colorsPlayer2 = [];
 }
 
-// popColors() changes the opacity of divs hovered over
-// function popColors(event) {
-//   var colorBoxes = $('.colorBox');  // colorBox array
-//   colorBoxes.eq(this).animate({opacity: '1'}, 500);
-// }
+// nextLevel() moves the player to the next level sequence
+function nextLevel() {
+  // levelDisplayed = $('#levelDisplay').text(1);
+  // var levelCounter = 1;
+  var level = parseInt($('#levelDisplay').text()); // level text
+  console.log(level); // need to fix '1', switch?
+  var newLevel = level + 1;
+  console.log(newLevel);
+  $('#levelDisplay').text(level + 1);
+  // levelCounter +=1;
+}
+
 
 // EVENTS:
 $('document').ready(function() {
