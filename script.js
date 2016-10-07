@@ -89,6 +89,10 @@ var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
 var t;
 
+// holds player info for this game
+var gameScore = {}; // holds current game stats
+var scoreBoard = []; // holds playerStats
+
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
@@ -160,12 +164,6 @@ function playerSequenceInput(event) {
   checkPlayerInput();
 }
 
-
-var playerStats;
-// holds player info for this game
-var gameScore = {}; // holds current game stats
-var scoreBoard = []; // holds playerStats
-
 // checkPlayerInput() checks the sequence given vs. sequence typed by player
 function checkPlayerInput() {
   nextMode();
@@ -174,7 +172,7 @@ function checkPlayerInput() {
     if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
       storeGameStats();
       console.log('WRONG COLOR');
-      alert('WRONG COLOR');
+      alert('GAME OVER - WRONG COLOR');
       resetSequence();
     }
     if (colorsPlayerBoxID[i] === colorsDisplayed[i]) {
@@ -182,16 +180,15 @@ function checkPlayerInput() {
     }
     if (correctCounter === colorsDisplayed.length) {
       console.log('CORRECT - NEXT LEVEL');
-      showLevel(); // $('#levelModal').show();
-      alert('CORRECT - NEXT LEVEL'); // change to a message on the page
+      showLevelPopup();
       resetSequence();
       nextLevel();
-      setBoard();
+
     }
   }
 }
 
-// storeGameStats() records the playerName, Level and Game Mode they reached
+// storeGameStats() records the playerName, Level and Game Mode they reached (if higher than previous score)
 function storeGameStats() {
   var plMode = $('#modeOptions').text();
   var plName = $('#playerName').text();
@@ -201,16 +198,86 @@ function storeGameStats() {
   gameScore.score = plScore;
   console.log(gameScore);
   scoreBoard.push(gameScore);
-  gameScore = {};
-  console.log(scoreBoard);
+  for (var i = 0; i < scoreBoard.length; i++) {
+    if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score < plScore) {
+      scoreBoard[i].score = plScore;
+      gameScore = {};
+    }
+    if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score >= plScore) {
+      alert('You have a previous higher or equal score, try again');
+      gameScore = {};
+    } else {
+      scoreBoard.push(gameScore);
+    }
+  }
 }
 
+// createScoreBoard() displays the board with the top 3 scores when button "i" is clicked
 function createScoreBoard() {
-  // show in pop up
+  $('.finalScoreModal').toggle();
+  // temporary store variables
+  var begN;
+  var intN;
+  var expN;
+  var begS;
+  var intS;
+  var expS;
+  // display variables
+  var topBeg;
+  var topInt;
+  var topExt;
+  for (var i = 0; i < scoreBoard.length; i++) {
+    switch(scoreBoard[i].mode) {
+      case 'beginner':
+        begN = scoreBoard[i].name;
+        begS = scoreBoard[i].score;
+          for (var a = 0; a < scoreBoard.length; a++) {
+            if (begsS < scoreBoard[a].score) {
+              topBeg = scoreBoard[a].name;
+            } else {
+              topBeg = begN;
+            }
+          }
+        break;
+      case 'intermediate':
+        intN = scoreBoard[i].name;
+        begN = scoreBoard[i].score;
+          for (var b = 0; b < scoreBoard.length; b++) {
+            if (intS < scoreBoard[b].score) {
+              topInt = scoreBoard[b].name;
+            } else {
+              topInt = intN;
+            }
+          }
+        break;
+      case 'extreme':
+        extN = scoreBoard[i].name;
+        extS = scoreBoard[i].score;
+          for (var c = 0; c < scoreBoard.length; c++) {
+            if (extS < scoreBoard[c].score) {
+              topExt = scoreBoard[c].name;
+            } else {
+              topExt = extN;
+            }
+          }
+        break;
+    }
+  }
+  $('.finalScoreModal').text('TOP SCORES: Beginner: ' + topBeg + ', Intermediate: ' + topInt + ', Extreme: ' + topExt);
 }
 
-function showLevel() {
-  $('#levelModal').show();
+// showLevelPopup() displays the "Next Level" notice
+function showLevelPopup() {
+  $('.levelModal').css({
+    visibility: 'visible',
+    zIndex: '0.2'
+  });
+  setTimeout(function() {
+    $('.levelModal').css({
+      visibility: 'hidden',
+      zIndex: '1'
+    })}, 1000);
+  setTimeout(setBoard, 1000);
 }
 
 // resetSequence() clers board and resets the sequence arrays displayed and entered
@@ -306,9 +373,9 @@ function nextMode() {
 }
 
 // timer() displays timer and gives a countdown time to enter the correct combination
-function timer() {
-  $('.displayTimer').show();
-}
+// function timer() {
+//   $('.displayTimer').show();
+// }
 
 
 

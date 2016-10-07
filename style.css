@@ -77,11 +77,11 @@ label {
 
 /*GP*/
 .levelModal {
-  /*visibility: hidden;*/
-  /*z-index: 1;*/
+  visibility: hidden;
+  z-index: 1;
   color: black;
   font-size: 40px;
-  background-color: red;
+  background-color: green;
   text-align: center;
   height: 50px;
   width: 300px;
@@ -90,15 +90,19 @@ label {
   position: absolute;
 }
 
-#finalScoreModal {
-  visibility: hidden;
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-  z-index: 1;
+.finalScoreModal {
+  /*visibility: hidden;*/
+  /*z-index: 1;*/
+  color: black;
+  font-size: 40px;
   background-color: red;
   text-align: center;
+  height: 350px;
+  width: 300px;
+  top: 160px;
+  right: 57%;
   position: absolute;
+  display: none;
 }
 
 .board {
@@ -207,22 +211,29 @@ label {
     margin: 1px;
   }
   #asideInfoBoxes {
-  font-size: 25px;
+    font-size: 25px;
   }
   .playerInfo {
-  font-size: 17px;
+    font-size: 17px;
   }
   .buttonsGP {
-  font-size: 18px;
+    font-size: 18px;
   }
   #colorContainer {
     width: 75%
   }
   .levelModal {
-  font-size: 25px;
-  width: 150px;
-  height: 60px;
-  top: 110px;
-  right: '';
+    font-size: 25px;
+    width: 150px;
+    height: 60px;
+    top: 110px;
+    right: 48%;
+  }
+  .finalScoreModal {
+    font-size: 25px;
+    width: 150px;
+    height: 60px;
+    top: 110px;
+    right: 48%;
   }
 }
