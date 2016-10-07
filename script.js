@@ -49,27 +49,26 @@ function autoFill () {
 
 // setBoard() creates the board, assigns random colors
 function setBoard() {
-  // boardSize = 4; // NEED TO MAKE SCALABLE
-  // for (var i = 0; i < (boardSize / 2); i++) { // 4 needs to change to the # of colors pending mode selection
-  if($('#modeOptions').text() === 'extreme') {
-    $('.timerDisplay').css('display', 'in-line');;
-  }
+  // if($('#modeOptions').text() === 'extreme') {
+  //   $('.timerDisplay').css('display', 'in-line');;
+  // }
   for (var i = 0; i < (boardSize); i++) {
-    console.log('startGameBtn working');
-    // $('#colorContainer').append('<tr class="tableRow"></tr>');
-    // for (var j = 0; j < (boardSize / 2); i++) {
-    //   $('tableRow').append('<td class="colorBox">COLOR' + (j + 1) + '</td>');
-    //   // $('.colorBox').eq(j).setAttribute('id', 'box' + (j + 1));
-    //   var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
-    //   $('.colorBox').eq(j).css('background-color', colorsArray[randNum]);
-    //   colorsArray.splice(randNum,1);
-    // }
+    // console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i) + '</div>');
     $('.colorBox')[i].setAttribute('id', 'box' + (i));
     var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
     $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
     colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
     // console.log(colorsArray);
+  }
+  if($('#modeOptions').text() === 'beginner') {
+    $('#colorContainer').css('width', '45%');
+  }
+  if(($('#modeOptions').text() === 'intermediate') || ($('#modeOptions').text() === 'extreme')) {
+    $('#colorContainer').css('width', '60%');
+  }
+  if($('#modeOptions').text() === 'extreme') {
+    $('.timerDisplay').css('display', 'in-line');
   }
   randomColorSequence();
 }
