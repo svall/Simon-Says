@@ -1,18 +1,40 @@
+* {
+  font-family: 'Fredoka One', cursive;
+}
+
 body {
   background-color: black;
+}
+
+#headerLP {
+  margin: 100px 0;
+}
+
+.navGP {
+  display: inline;
 }
 
 .headers {
   color: white;
   text-align: center;
   height: 80px;
-  margin-top: 2%;
+  margin-top: -30px;
+  /*margin-bottom: 20px;*/
+  font-size: 80px;
   /*background-color: pink;*/
 }
 
-a {
+#homeImg {
   color: white;
   display: inline-block;
+  height: 60px;
+  width: 60px;
+  padding: 10px 0 0 10px;
+}
+#infoImg {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
   padding: 10px 0 0 10px;
 }
 
@@ -22,8 +44,8 @@ label {
 /*LP - main buttons*/
 .buttonsLP {
   border: 2px solid;
-  height: 60px;
-  width: 200px;
+  height: 90px;
+  width: 230px;
   font-size: 30px;
   padding: 10px;
   margin: 0;
@@ -36,10 +58,10 @@ label {
 }
 /*LP - form to select # of players*/
 #formContainerLP {
-  height: 280px;
-  width: 400px;
+  height: 300px;
+  width: 460px;
   position: relative;
-  margin-left: 11px;
+  margin-left: 12px;
   margin-top: -1px;
   text-align: center;
   font-size: 30px;
@@ -76,7 +98,7 @@ label {
   /*background-color: red;*/
   font-size: 32px;
   /*height:200px;*/
-  margin-top: -40px;
+  margin-top: -10px;
   /*margin-left: */
 }
 
@@ -89,7 +111,7 @@ label {
 .asidePlayerInfo {
   /*width: 5rem;*/
   margin-top: 8%;
-  padding-top: 5%;
+  padding-top: 6%;
   border: 2px solid white;
 }
 
@@ -102,8 +124,9 @@ label {
 }
 #levelDisplay {
   text-align: center;
-  color: grey;
+  color: red;
   height: 20px;
+  padding-bottom: 10px;
 }
 .allButtonsGP {
   text-align: center;
@@ -122,7 +145,7 @@ label {
   display: inline-block;
   width: 70%;
   height: 90%;
-  margin-top: 30px;
+  margin-top: 50px;
   text-align: center;
 }
 
@@ -136,8 +159,6 @@ label {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
-
 }
 
 .colorBox {
@@ -158,8 +179,8 @@ label {
 
 @media only screen and (max-width: 600px) {
   .colorBox {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     margin: 1px;
   }
   #asideInfoBoxes {

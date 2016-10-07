@@ -59,10 +59,10 @@ function setBoard() {
     // console.log(colorsArray);
   }
   if($('#modeOptions').text() === 'beginner') {
-    // $('#colorContainer').css('width', '60%');
+    $('#colorContainer').css('width', '40%');
     $('.colorBox').css({
-      height: '180px',
-      width: '180px'
+      // height: '150px',
+      // width: '150px'
     });
   }
   if(($('#modeOptions').text() === 'intermediate') || ($('#modeOptions').text() === 'extreme')) {

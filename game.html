@@ -5,11 +5,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
     <script src="script.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
   </head>
   <body>
+    <nav class="navBar" id="navGP">
+      <a href="landing.html"><img src="http://www.smcu.com/content/images/original/Mortgage-White-212x215.png" id="homeImg"></a>
+      <img src="http://www.iconsdb.com/icons/preview/white/info-xxl.png" id="infoImg">
+    </nav>
     <header>
-      <a href="landing.html">HOME</a>
-      <h1 class="headers">SIMON SAYS</h1>
+      <h1 class="headers">SIMON SAYS...</h1>
     </header>
     <div class="board">
       <main id="containerMain">
@@ -23,15 +27,15 @@
             <button type="submit" class="buttonsGP" id="resetGameBtn">Reset</button><br>
           </div>
           <div class="asidePlayerInfo">
+            <label class="labelsGP">Level
+              <h3 id="levelDisplay">1</h3>
+            </label>
             <label class="labelsGP">Player
               <h3 class="playerInfo" id="playerName">Name</h3>
             </label><br>
             <label class="labelsGP">Mode
               <h3 class="playerInfo" id="modeOptions">Mode</h3>
             </label class="labelsGP"><br>
-            <label class="labelsGP">Level
-              <h3 id="levelDisplay">1</h3>
-            </label>
           </div>
         </div>
       </aside>
