@@ -99,7 +99,7 @@ label {
   text-align: center;
   height: 350px;
   width: 300px;
-  top: 160px;
+  top: 200px;
   right: 57%;
   position: absolute;
   display: none;
@@ -231,8 +231,8 @@ label {
   }
   .finalScoreModal {
     font-size: 25px;
-    width: 150px;
-    height: 60px;
+    width: 190px;
+    height: 220px;
     top: 110px;
     right: 48%;
   }

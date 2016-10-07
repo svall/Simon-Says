@@ -11,7 +11,7 @@ var boardSize;
 var levelTimes = {
   l1: 1,
   l2: 1,
-  l3: 2,
+  l3: 1,
   l4: 1,
   l5: 1,
   l6: 1,
@@ -200,12 +200,13 @@ function storeGameStats() {
   console.log(gameScore);
   scoreBoard.push(gameScore);
   for (var i = 0; i < scoreBoard.length; i++) {
-    if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score < plScore) {
-      scoreBoard[i].score = plScore;
-      gameScore = {};
-    }
+    console.log('loop');
     if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score >= plScore) {
       alert('You have a previous higher or equal score, try again');
+      gameScore = {};
+    } else if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score < plScore) {
+      scoreBoard[i].score = plScore;
+      console.log('tst')
       gameScore = {};
     } else {
       scoreBoard.push(gameScore);
@@ -218,16 +219,16 @@ function createScoreBoard() {
   $('.finalScoreModal').toggle();
   $('.colorBox').toggle();
   // temporary store variables:
-  var begN;
-  var intN;
-  var expN;
-  var begS;
-  var intS;
-  var expS;
+  var begN = '';
+  var intN = '';
+  var expN = '';
+  var begS = 0;
+  var intS = 0;;
+  var expS = 0;;
   // variables to populate the board:
-  var topBeg;
-  var topInt;
-  var topExt;
+  var topBeg ='sfs';
+  var topInt = 'sdfsdf';
+  var topExt = 'sdfsdf';
   for (var i = 0; i < scoreBoard.length; i++) {
     switch(scoreBoard[i].mode) {
       case 'beginner':
@@ -266,7 +267,7 @@ function createScoreBoard() {
         break;
     }
   }
-  $('.finalScoreModal').text('TOP SCORES: Beginner: ' + topBeg + ', Intermediate: ' + topInt + ', Extreme: ' + topExt);
+  $('.finalScoreModal').text('TOP SCORES! Beginner: ' + topBeg + ', Intermediate: ' + topInt + ', Extreme: ' + topExt);
 }
 
 // showLevelPopup() displays the "Next Level" notice
@@ -345,7 +346,6 @@ function sequenceIncrement() {
     default:
       sequenceLength = levelTimes.l1;
   }
-  // console.log(sequenceLength);
 }
 
 // nextMode() moves player to next mode available when all levels are completed
@@ -402,5 +402,5 @@ $('document').ready(function() {
   // $('.colorBox').on('click', playerSequenceInput);
   $('#resetGameBtn').on('click', resetSequence);
   $('#resetGameBtn').on('click', resetLevel);
-  $('#infoImg').on('click', createScoreBoard);
+  $('#starImg').on('click', createScoreBoard);
 });
