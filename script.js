@@ -60,13 +60,6 @@ function setBoard() {
   }
   if($('#modeOptions').text() === 'beginner') {
     $('#colorContainer').css('width', '40%');
-    $('.colorBox').css({
-      // height: '150px',
-      // width: '150px'
-    });
-  }
-  if(($('#modeOptions').text() === 'intermediate') || ($('#modeOptions').text() === 'extreme')) {
-    // $('#colorContainer').css('width', '50%');
   }
   if($('#modeOptions').text() === 'extreme') {
     $('.timerDisplay').css('display', 'in-line');
@@ -101,11 +94,9 @@ function randomColorSequence() {
   // console.log('click works');
   for (var i = 1; i <= sequenceLength; i++) {
     t = setTimeout (function() {
-    // setTimeout (function() {
-      var colorBoxes = $('.colorBox');  // colorBox array
-      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-8
+      var colorBoxes = $('.colorBox');
+      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-9
       console.log(randNum);
-      // $('.colorBox').eq(randNum).css('box-shadow', '0 10px 50px 20px red');
       colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
       colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
       colorsDisplayed.push(randNum);
@@ -191,6 +182,7 @@ function checkPlayerInput() {
     }
     if (correctCounter === colorsDisplayed.length) {
       console.log('CORRECT - NEXT LEVEL');
+      showLevel(); // $('#levelModal').show();
       alert('CORRECT - NEXT LEVEL'); // change to a message on the page
       resetSequence();
       nextLevel();
@@ -208,6 +200,17 @@ function storeGameStats() {
   gameScore.name = plName;
   gameScore.score = plScore;
   console.log(gameScore);
+  scoreBoard.push(gameScore);
+  gameScore = {};
+  console.log(scoreBoard);
+}
+
+function createScoreBoard() {
+  // show in pop up
+}
+
+function showLevel() {
+  $('#levelModal').show();
 }
 
 // resetSequence() clers board and resets the sequence arrays displayed and entered
@@ -330,4 +333,5 @@ $('document').ready(function() {
   // $('.colorBox').on('click', playerSequenceInput);
   $('#resetGameBtn').on('click', resetSequence);
   $('#resetGameBtn').on('click', resetLevel);
+  $('#infoImg').on('click', createScoreBoard);
 });
