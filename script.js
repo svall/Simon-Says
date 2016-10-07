@@ -172,10 +172,7 @@ function playerSequenceInput(event) {
 
 var playerStats;
 // holds player info for this game
-var gameScore = {
-  name: playerName,
-  score: playerLevel
-};
+var gameScore = {}; // holds current game stats
 var scoreBoard = []; // holds playerStats
 
 // checkPlayerInput() checks the sequence given vs. sequence typed by player
@@ -184,6 +181,7 @@ function checkPlayerInput() {
   var correctCounter = 0;
   for (var i = 0; i < colorsPlayerBoxID.length; i++) {
     if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
+      storeGameStats();
       console.log('WRONG COLOR');
       alert('WRONG COLOR');
       resetSequence();
@@ -199,6 +197,17 @@ function checkPlayerInput() {
       setBoard();
     }
   }
+}
+
+// storeGameStats() records the playerName, Level and Game Mode they reached
+function storeGameStats() {
+  var plMode = $('#modeOptions').text();
+  var plName = $('#playerName').text();
+  var plScore = parseInt($('#levelDisplay').text()) - 1;
+  gameScore.mode = plMode;
+  gameScore.name = plName;
+  gameScore.score = plScore;
+  console.log(gameScore);
 }
 
 // resetSequence() clers board and resets the sequence arrays displayed and entered
