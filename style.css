@@ -17,30 +17,24 @@ body {
 .headers {
   color: white;
   text-align: center;
-  height: 80px;
+  height: 40px;
   margin-top: -30px;
-  /*margin-bottom: 20px;*/
   font-size: 80px;
   /*background-color: pink;*/
 }
 
-#homeImg {
+img {
   color: white;
   display: inline-block;
   height: 60px;
   width: 60px;
-  padding: 10px 0 0 10px;
-}
-#infoImg {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  padding: 10px 0 0 10px;
+  padding: 8px 0 0 8px;
 }
 
 label {
   color: white;
 }
+
 /*LP - main buttons*/
 .buttonsLP {
   border: 2px solid;
@@ -62,7 +56,7 @@ label {
   width: 460px;
   position: relative;
   margin-left: 12px;
-  margin-top: -1px;
+  /*margin-top: -1px;*/
   text-align: center;
   font-size: 30px;
 }
@@ -138,7 +132,6 @@ label {
   /*margin: auto;*/
 }
 
-
 /*game area*/
 #containerMain {
   /*background-color: lightblue;*/
@@ -152,7 +145,7 @@ label {
 #colorContainer {
   /*background-color: yellow;*/
   height: 75%;
-  width: 500px;
+  width: 550px;
   margin: auto;
   /*text-align: center;*/
   display: flex;
@@ -164,8 +157,8 @@ label {
 .colorBox {
   background-color: blue;
   display: inline-block;
-  height:130px;
-  width: 130px;
+  height:160px;
+  width: 160px;
   border: 2px solid black;
   line-height: 80px;
   opacity: 0.5;
@@ -178,17 +171,28 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
+  #headerGP {
+    display: block;
+    height: 40px;
+    margin: auto;
+    /*margin-bottom: 10px;*/
+    font-size: 40px;
+    /*background-color: pink;*/
+  }
+  img {
+    height: 30px;
+    width: 30px;
+  }
   .colorBox {
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     margin: 1px;
   }
   #asideInfoBoxes {
-  /*background-color: pink;*/
   font-size: 25px;
   }
   .playerInfo {
-  font-size: 18px;
+  font-size: 17px;
   }
   .buttonsGP {
   font-size: 18px;
@@ -197,4 +201,5 @@ label {
     width: 75%
 /*need to change so container doesn't shrink so much
 */  }
+
 }
