@@ -166,4 +166,7 @@ label {
   .buttonsGP {
   font-size: 18px;
   }
+  #colorContainer {
+/*need to change so container doesn't shrink so much
+*/  }
 }

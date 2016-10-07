@@ -49,9 +49,6 @@ function autoFill () {
 
 // setBoard() creates the board, assigns random colors
 function setBoard() {
-  // if($('#modeOptions').text() === 'extreme') {
-  //   $('.timerDisplay').css('display', 'in-line');;
-  // }
   for (var i = 0; i < (boardSize); i++) {
     // console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i) + '</div>');
@@ -172,6 +169,15 @@ function playerSequenceInput(event) {
   checkPlayerInput();
 }
 
+
+var playerStats;
+// holds player info for this game
+var gameScore = {
+  name: playerName,
+  score: playerLevel
+};
+var scoreBoard = []; // holds playerStats
+
 // checkPlayerInput() checks the sequence given vs. sequence typed by player
 function checkPlayerInput() {
   nextMode();
@@ -187,7 +193,7 @@ function checkPlayerInput() {
     }
     if (correctCounter === colorsDisplayed.length) {
       console.log('CORRECT - NEXT LEVEL');
-      alert('CORRECT - NEXT LEVEL');
+      alert('CORRECT - NEXT LEVEL'); // change to a message on the page
       resetSequence();
       nextLevel();
       setBoard();
