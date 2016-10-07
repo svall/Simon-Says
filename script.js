@@ -62,10 +62,14 @@ function setBoard() {
     // console.log(colorsArray);
   }
   if($('#modeOptions').text() === 'beginner') {
-    $('#colorContainer').css('width', '45%');
+    $('#colorContainer').css('width', '60%');
+    $('.colorBox').css({
+      height: '180px',
+      width: '180px'
+    });
   }
   if(($('#modeOptions').text() === 'intermediate') || ($('#modeOptions').text() === 'extreme')) {
-    $('#colorContainer').css('width', '60%');
+    $('#colorContainer').css('width', '50%');
   }
   if($('#modeOptions').text() === 'extreme') {
     $('.timerDisplay').css('display', 'in-line');

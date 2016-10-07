@@ -6,8 +6,8 @@ body {
   color: white;
   text-align: center;
   height: 80px;
-  margin-top: 5%;
-  background-color: pink;
+  margin-top: 2%;
+  /*background-color: pink;*/
 }
 
 a {
@@ -62,29 +62,33 @@ label {
 .board {
   width: 95%;
   height: 95%;
-  background-color: green;
+  /*background-color: green;*/
 }
 /*Player info box on the right side of the game*/
 .containerAside {
   display: inline-block;
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
   width: 30%;
   float: right;
 }
 
 #asideInfoBoxes {
-  background-color: red;
-  font-size: 35px;
+  /*background-color: red;*/
+  font-size: 32px;
+  /*height:200px;*/
+  margin-top: -40px;
+  /*margin-left: */
 }
 
 .labelsGP {
   display: block;
   text-align: center
-  /*height:35px;*/
+  /*height: 100px;*/
 }
 
 .asidePlayerInfo {
-  margin-top: 3rem;
+  /*width: 5rem;*/
+  margin-top: 8%;
   padding-top: 5%;
   border: 2px solid white;
 }
@@ -94,37 +98,38 @@ label {
   color: grey;
   font-size: 2rem;
   font-weight: bold;
+  height: 20px;
 }
 #levelDisplay {
   text-align: center;
   color: grey;
+  height: 20px;
 }
 .allButtonsGP {
   text-align: center;
 }
 .buttonsGP {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
+  margin-left: 10px;
+  margin-right: 10px;
   /*margin: auto;*/
 }
 
 
 /*game area*/
 #containerMain {
-  background-color: lightblue;
+  /*background-color: lightblue;*/
   display: inline-block;
   width: 65%;
   height: 90%;
+  margin-top: 30px;
 }
 
 #colorContainer {
-  background-color: yellow;
+  /*background-color: yellow;*/
   height: 75%;
   width: 70%;
   margin: auto;
-  /*display: flex;*/
-  /*flex-flow: row wrap;*/
-  /*justify-content: space-around;*/
-  /*align-items: center;*/
   text-align: center;
 
 }
@@ -138,13 +143,7 @@ label {
   line-height: 80px;
   opacity: 0.5;
   margin: 2px;
-  /*box-shadow: 0px 10px 50px 20px black;*/
 }
-
-/*.colorBox:hover {
-  border: 1px solid green;
-  box-shadow: 0px 5px 5px green;
-}*/
 
 .timerDisplay {
   display: none;
@@ -152,21 +151,19 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
-  * {
-    /*font-size: ;*/
-  }
   .colorBox {
     height: 80px;
     width: 80px;
     margin: 1px;
   }
   #asideInfoBoxes {
-  background-color: pink;
+  /*background-color: pink;*/
   font-size: 25px;
   }
   .playerInfo {
-  font-size: 20px;
+  font-size: 18px;
   }
   .buttonsGP {
-  font-size: 20px;
+  font-size: 18px;
+  }
 }
