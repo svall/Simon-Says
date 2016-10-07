@@ -1,5 +1,39 @@
 // Susana Isaza - Simon Says
 
+
+// variables used to set up the board:
+var modes = ['beginner', 'intermediate', 'extreme'];
+var size = [4, 9, 9];
+var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white', 'orange'];
+var boardSize;
+
+// level variables, number of color sequences displayed per level
+var levelTimes = {
+  l1: 1,
+  l2: 1,
+  l3: 2,
+  l4: 1,
+  l5: 1,
+  l6: 1,
+  l7: 1,
+  l8: 1,
+  l9: 1,
+  l10: 1
+  };
+var sequenceLength = levelTimes.l1;
+
+// variables that store the color sequences given to and entered by player
+var colorsDisplayed = [];
+var colorsPlayer1 = [];
+var colorsPlayerBoxID = [];
+var colorsPlayer2 = [];
+var t;
+
+// holds player info for this game
+var gameScore = {}; // holds current game stats
+var scoreBoard = []; // holds playerStats
+
+
 // FUNCTIONS:
 
 // LANDING PAGE:
@@ -24,13 +58,6 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
-
-// variables used to set up the board:
-var modes = ['beginner', 'intermediate', 'extreme'];
-var size = [4, 9, 9];
-var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white', 'orange'];
-var boardSize;
-
 // autoFill() adds values from landing form to corresponding place in game page
 function autoFill () {
   var formSelections = window.location.search.substring(1).split("&");
@@ -67,32 +94,6 @@ function setBoard() {
   randomColorSequence();
 }
 
-// level variables, number of color sequences displayed per level
-var levelTimes = {
-  l1: 1,
-  l2: 1,
-  l3: 2,
-  l4: 1,
-  l5: 1,
-  l6: 1,
-  l7: 1,
-  l8: 1,
-  l9: 1,
-  l10: 1
-  };
-var sequenceLength = levelTimes.l1;
-
-// variables that store the color sequences given to and entered by player
-var colorsDisplayed = [];
-var colorsPlayer1 = [];
-var colorsPlayerBoxID = [];
-var colorsPlayer2 = [];
-var t;
-
-// holds player info for this game
-var gameScore = {}; // holds current game stats
-var scoreBoard = []; // holds playerStats
-
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
@@ -106,7 +107,7 @@ function randomColorSequence() {
       colorsDisplayed.push(randNum);
     }, 1000 * i);
   }
-  console.log(colorsDisplayed);
+  // console.log(colorsDisplayed);
   lightHoverDelay();
   $('.colorBox').on('click', playerSequenceInput);
 }
@@ -160,7 +161,7 @@ function playerSequenceInput(event) {
       colorsPlayerBoxID.push(8);
       break;
   }
-  console.log(colorsPlayerBoxID);
+  // console.log(colorsPlayerBoxID);
   checkPlayerInput();
 }
 
@@ -171,7 +172,7 @@ function checkPlayerInput() {
   for (var i = 0; i < colorsPlayerBoxID.length; i++) {
     if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
       storeGameStats();
-      console.log('WRONG COLOR');
+      // console.log('WRONG COLOR');
       alert('GAME OVER - WRONG COLOR');
       resetSequence();
     }
@@ -179,7 +180,7 @@ function checkPlayerInput() {
       correctCounter++;
     }
     if (correctCounter === colorsDisplayed.length) {
-      console.log('CORRECT - NEXT LEVEL');
+      // console.log('CORRECT - NEXT LEVEL');
       showLevelPopup();
       resetSequence();
       nextLevel();
@@ -212,17 +213,18 @@ function storeGameStats() {
   }
 }
 
-// createScoreBoard() displays the board with the top 3 scores when button "i" is clicked
+// createScoreBoard() displays the board with the top 3 scores when button "i" is clicked (hides board temporarily)
 function createScoreBoard() {
   $('.finalScoreModal').toggle();
-  // temporary store variables
+  $('.colorBox').toggle();
+  // temporary store variables:
   var begN;
   var intN;
   var expN;
   var begS;
   var intS;
   var expS;
-  // display variables
+  // variables to populate the board:
   var topBeg;
   var topInt;
   var topExt;
@@ -231,6 +233,7 @@ function createScoreBoard() {
       case 'beginner':
         begN = scoreBoard[i].name;
         begS = scoreBoard[i].score;
+        // console.log(begN);
           for (var a = 0; a < scoreBoard.length; a++) {
             if (begsS < scoreBoard[a].score) {
               topBeg = scoreBoard[a].name;
@@ -282,7 +285,7 @@ function showLevelPopup() {
 
 // resetSequence() clers board and resets the sequence arrays displayed and entered
 function resetSequence() {
-  console.log('reset btn');
+  // console.log('reset btn');
   colorsDisplayed = [];
   colorsPlayer1 = [];
   colorsPlayerBoxID = [];
@@ -301,9 +304,9 @@ function resetLevel() {
 // nextLevel() moves the player to the next level sequence
 function nextLevel() {
   var level = parseInt($('#levelDisplay').text()); // level text
-  console.log(level);
+  // console.log(level);
   var newLevel = level + 1;
-  console.log(newLevel);
+  // console.log(newLevel);
   $('#levelDisplay').text(level + 1);
   sequenceIncrement();
 }
@@ -342,7 +345,7 @@ function sequenceIncrement() {
     default:
       sequenceLength = levelTimes.l1;
   }
-  console.log(sequenceLength);
+  // console.log(sequenceLength);
 }
 
 // nextMode() moves player to next mode available when all levels are completed
@@ -376,7 +379,6 @@ function nextMode() {
 // function timer() {
 //   $('.displayTimer').show();
 // }
-
 
 
 // EVENTS:
