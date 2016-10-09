@@ -104,10 +104,11 @@ function randomColorSequence() {
       var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
       console.log(randNum);
       colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
-      colorBoxes.eq(randNum).css('boxShadow', '0px 0px 40px 10px white');
+      colorBoxes.eq(randNum).css('boxShadow', ' inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
+      // colorBoxes.eq(randNum).css('boxShadow', ' 0px 0px 40px 20px white');
       colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
       setTimeout (function() {
-        $('.colorBox').css('boxShadow', '0px 0px 0px 0px white');
+        $('.colorBox').css('boxShadow', '');
         }, 1000);
       colorsDisplayed.push(randNum);
     }, 1000 * i);
@@ -127,14 +128,14 @@ function lightBoxes() {
       // console.log('animation click works');
       $(this).css({
         opacity: '1',
-        boxShadow: '0 0 40px 10px white'
+        boxShadow: 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white'
       });
   });
   $('.colorBox').mouseout(function(event) {
     // console.log('animation click works');
     $(this).css({
       opacity: '0.5',
-      boxShadow: '0 0 0px 0px white'
+      boxShadow: ''
     });
   });
   $('.colorBox').on('click', playerSequenceInput);
