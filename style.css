@@ -187,6 +187,7 @@ label {
   line-height: 80px;
   opacity: 0.5;
   margin: 2px;
+  box-shadow: 0 0 0 0 white;
 }
 
 .timerDisplay {

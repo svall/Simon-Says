@@ -4,7 +4,7 @@
 // variables used to set up the board:
 var modes = ['beginner', 'intermediate', 'extreme'];
 var size = [4, 9, 9];
-var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white', 'orange'];
+var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'maroon', 'orange'];
 var boardSize;
 
 // level variables, number of color sequences displayed per level
@@ -79,9 +79,10 @@ function setBoard() {
   for (var i = 0; i < (boardSize); i++) {
     // console.log('startGameBtn working');
     $('#colorContainer').append('<div class="colorBox">COLOR' + (i) + '</div>');
-    $('.colorBox')[i].setAttribute('id', 'box' + (i));
+    $('.colorBox').eq(i).attr('id', 'box' + (i));
     var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
-    $('.colorBox')[i].setAttribute('style', 'background-color: ' + colorsArray[randNum]);
+    $('.colorBox').eq(i).attr('style', 'background-color: ' + colorsArray[randNum]);
+    // $('.colorBox').eq(i).attr('style', 'box-shadow: 0 0 0 0 white');
     colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
     // console.log(colorsArray);
   }
@@ -102,7 +103,7 @@ function randomColorSequence() {
       var colorBoxes = $('.colorBox');
       var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-9
       console.log(randNum);
-      colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
+      colorBoxes.eq(randNum).animate({opacity: '1', boxShadow: '0 0 40px 20px red'}, 500);
       colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
       colorsDisplayed.push(randNum);
     }, 1000 * i);
@@ -120,11 +121,17 @@ function playerDelay() {
 function lightBoxes() {
   $('.colorBox').mouseover(function(event) {
       // console.log('animation click works');
-      $(this).css('opacity', '1');
+      $(this).css({
+        opacity: '1',
+        boxShadow: '0 0 40px 10px white'
+      });
   });
   $('.colorBox').mouseout(function(event) {
     // console.log('animation click works');
-    $(this).css('opacity', '0.5');
+    $(this).css({
+      opacity: '0.5',
+      boxShadow: '0 0 0px 0px white'
+    });
   });
   $('.colorBox').on('click', playerSequenceInput);
 }
@@ -171,7 +178,6 @@ function checkPlayerInput() {
   var correctCounter = 0;
   for (var i = 0; i < colorsPlayerBoxID.length; i++) {
     if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
-      // console.log('WRONG COLOR');
       alert('GAME OVER - WRONG COLOR');
       storeGameStats();
       resetLevel();
@@ -185,12 +191,11 @@ function checkPlayerInput() {
       showLevelPopup();
       resetSequence();
       nextLevel();
-
     }
   }
 }
 
-// storeGameStats() records the playerName, Level and Game Mode they reached (if higher than previous score)
+// storeGameStats() records the playerName, Level and Game Mode they reached (if new player or higher score than previous game)
 function storeGameStats() {
   var plMode = $('#modeOptions').text();
   var plName = $('#playerName').text();
@@ -199,7 +204,7 @@ function storeGameStats() {
   gameScore.name = plName;
   gameScore.score = plScore;
   console.log(gameScore);
-  // scoreBoard.push(gameScore);
+
   if (scoreBoard.length === 0) {
     console.log('first player');
     scoreBoard.push(gameScore);
@@ -216,11 +221,11 @@ function storeGameStats() {
         scoreBoard.push(gameScore);
         gameScore = {};
       } else if ((scoreBoard[i].name === plName) && (scoreBoard[i].mode === plMode)) { // old player, old mode
-        if (scoreBoard[i].score >= plScore) {
+        if (scoreBoard[i].score >= plScore) { // old player, old mode, lower score
           console.log('smaller score');
           alert('You have a previous higher or equal score, try again');
           gameScore = {};
-        } else {
+        } else {  // old player, old mode, higher score
           console.log('record');
           scoreBoard[i].score = plScore;
           gameScore = {};
@@ -229,22 +234,6 @@ function storeGameStats() {
     }
   }
 }
-
-
-    // if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score >= plScore)) {
-    //   console.log('smaller score');
-    //   alert('You have a previous higher or equal score, try again');
-    //   gameScore = {};
-    // } else if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score < plScore)) {
-    //   console.log('set record')
-    //   scoreBoard[i].score = plScore;
-    //   gameScore = {};
-    // } else {
-    //   console.log('new player');
-    //   scoreBoard.push(gameScore);
-    // }
-//   }
-// }
 
 // createScoreBoard() displays the board with the top 3 scores when button "i" is clicked (hides board temporarily)
 function createScoreBoard() {
@@ -325,7 +314,7 @@ function resetSequence() {
   colorsPlayer2 = [];
   $('.colorBox').remove();
   clearTimeout(t);
-  colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'white', 'orange'];
+  colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'maroon', 'orange'];
 }
 
 // resetLevel() sets the Level displayed back to 1 when reset button is clicked
