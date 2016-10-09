@@ -108,13 +108,12 @@ function randomColorSequence() {
     }, 1000 * i);
   }
   // console.log(colorsDisplayed);
-  lightHoverDelay();
-  $('.colorBox').on('click', playerSequenceInput);
+  playerDelay();
 }
 
-// lightHoverDelay() activates the hover effect after the sequence is displayed
-function lightHoverDelay() {
-  setTimeout(lightBoxes, (sequenceLength + 1) * 1000);
+// playerDelay() activates the hover and click events after the sequence is displayed
+function playerDelay() {
+  setTimeout(lightBoxes, (sequenceLength + 2) * 1000);
 }
 
 // lightBoxes() changes opacity of boxes hovered over
@@ -127,6 +126,7 @@ function lightBoxes() {
     // console.log('animation click works');
     $(this).css('opacity', '0.5');
   });
+  $('.colorBox').on('click', playerSequenceInput);
 }
 
 // playerSequenceInput() saves the click inputs the player makes
@@ -174,6 +174,7 @@ function checkPlayerInput() {
       storeGameStats();
       // console.log('WRONG COLOR');
       alert('GAME OVER - WRONG COLOR');
+      resetLevel();
       resetSequence();
     }
     if (colorsPlayerBoxID[i] === colorsDisplayed[i]) {
@@ -200,15 +201,17 @@ function storeGameStats() {
   console.log(gameScore);
   scoreBoard.push(gameScore);
   for (var i = 0; i < scoreBoard.length; i++) {
-    console.log('loop');
-    if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score >= plScore) {
+    console.log('entered loop');
+    if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score >= plScore)) {
+      console.log('smaller score');
       alert('You have a previous higher or equal score, try again');
       gameScore = {};
-    } else if (scoreBoard[i].mode === plMode && scoreBoard[i].name === plName && scoreBoard[i].score < plScore) {
+    } else if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score < plScore)) {
+      console.log('set record')
       scoreBoard[i].score = plScore;
-      console.log('tst')
       gameScore = {};
     } else {
+      console.log('new player');
       scoreBoard.push(gameScore);
     }
   }
