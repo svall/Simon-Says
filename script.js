@@ -101,10 +101,14 @@ function randomColorSequence() {
   for (var i = 1; i <= sequenceLength; i++) {
     t = setTimeout (function() {
       var colorBoxes = $('.colorBox');
-      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 1-9
+      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
       console.log(randNum);
-      colorBoxes.eq(randNum).animate({opacity: '1', boxShadow: '0 0 40px 20px red'}, 500);
+      colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
+      colorBoxes.eq(randNum).css('boxShadow', '0px 0px 40px 10px white');
       colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
+      setTimeout (function() {
+        $('.colorBox').css('boxShadow', '0px 0px 0px 0px white');
+        }, 1000);
       colorsDisplayed.push(randNum);
     }, 1000 * i);
   }
