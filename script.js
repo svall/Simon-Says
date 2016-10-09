@@ -113,7 +113,7 @@ function randomColorSequence() {
 
 // playerDelay() activates the hover and click events after the sequence is displayed
 function playerDelay() {
-  setTimeout(lightBoxes, (sequenceLength + 2) * 1000);
+  setTimeout(lightBoxes, (sequenceLength + 1) * 1000);
 }
 
 // lightBoxes() changes opacity of boxes hovered over
@@ -171,9 +171,9 @@ function checkPlayerInput() {
   var correctCounter = 0;
   for (var i = 0; i < colorsPlayerBoxID.length; i++) {
     if (colorsPlayerBoxID[i] !== colorsDisplayed[i]) {
-      storeGameStats();
       // console.log('WRONG COLOR');
       alert('GAME OVER - WRONG COLOR');
+      storeGameStats();
       resetLevel();
       resetSequence();
     }
@@ -199,23 +199,52 @@ function storeGameStats() {
   gameScore.name = plName;
   gameScore.score = plScore;
   console.log(gameScore);
-  scoreBoard.push(gameScore);
-  for (var i = 0; i < scoreBoard.length; i++) {
-    console.log('entered loop');
-    if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score >= plScore)) {
-      console.log('smaller score');
-      alert('You have a previous higher or equal score, try again');
-      gameScore = {};
-    } else if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score < plScore)) {
-      console.log('set record')
-      scoreBoard[i].score = plScore;
-      gameScore = {};
-    } else {
-      console.log('new player');
-      scoreBoard.push(gameScore);
+  // scoreBoard.push(gameScore);
+  if (scoreBoard.length === 0) {
+    console.log('first player');
+    scoreBoard.push(gameScore);
+    gameScore = {};
+  } else {
+    for (var i = 0; i < scoreBoard.length; i++) {
+      console.log('entered loop');
+      if (scoreBoard[i].name !== plName) { // new player
+        console.log('new player');
+        scoreBoard.push(gameScore);
+        gameScore = {};
+      } else if ((scoreBoard[i].name === plName) && (scoreBoard[i].mode !== plMode)) { // old player, new mode
+        console.log('new mode');
+        scoreBoard.push(gameScore);
+        gameScore = {};
+      } else if ((scoreBoard[i].name === plName) && (scoreBoard[i].mode === plMode)) { // old player, old mode
+        if (scoreBoard[i].score >= plScore) {
+          console.log('smaller score');
+          alert('You have a previous higher or equal score, try again');
+          gameScore = {};
+        } else {
+          console.log('record');
+          scoreBoard[i].score = plScore;
+          gameScore = {};
+        }
+      }
     }
   }
 }
+
+
+    // if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score >= plScore)) {
+    //   console.log('smaller score');
+    //   alert('You have a previous higher or equal score, try again');
+    //   gameScore = {};
+    // } else if ((scoreBoard[i].mode === plMode) && (scoreBoard[i].name === plName) && (scoreBoard[i].score < plScore)) {
+    //   console.log('set record')
+    //   scoreBoard[i].score = plScore;
+    //   gameScore = {};
+    // } else {
+    //   console.log('new player');
+    //   scoreBoard.push(gameScore);
+    // }
+//   }
+// }
 
 // createScoreBoard() displays the board with the top 3 scores when button "i" is clicked (hides board temporarily)
 function createScoreBoard() {
@@ -239,7 +268,7 @@ function createScoreBoard() {
         begS = scoreBoard[i].score;
         // console.log(begN);
           for (var a = 0; a < scoreBoard.length; a++) {
-            if (begsS < scoreBoard[a].score) {
+            if (begS < scoreBoard[a].score) {
               topBeg = scoreBoard[a].name;
             } else {
               topBeg = begN;
