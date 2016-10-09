@@ -6,24 +6,7 @@ body {
   background-color: black;
 }
 
-#headerLP {
-  margin: 100px 0;
-}
-
-.navGP {
-  display: inline;
-}
-
-.headers {
-  color: white;
-  text-align: center;
-  height: 40px;
-  margin-top: -30px;
-  font-size: 80px;
-  /*background-color: pink;*/
-}
-
-img {
+.allIconImgs {
   color: white;
   display: inline-block;
   height: 60px;
@@ -35,7 +18,50 @@ label {
   color: white;
 }
 
-/*LP - main buttons*/
+/*LP*/
+.headerLP {
+  background-color: pink;
+}
+.logosLP {
+  width: 50%;
+  display: inline-block;
+}
+.loginButton {
+  width: 48%;
+  display: inline-block;
+  text-align: right;
+}
+.h1LP {
+  color: white;
+  background-color: green;
+  font-size: 60px;
+}
+.h3LP {
+  color: white;
+  background-color: orange;
+  font-size: 30px;
+}
+
+.containerHolder {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.signupContainerLP {
+  background-color: blue;
+  display: inline-block;
+  width: 600px;
+}
+.colorsImgLP {
+  display: inline-block;
+  text-align: right;
+  width:300px;
+  /*float: right;*/
+}
+
+/*main buttons*/
 .buttonsLP {
   border: 2px solid;
   height: 90px;
@@ -74,8 +100,65 @@ label {
   display: none;
 }
 
+/*LP*/
+/*#headerLP {
+  background-color: red;
+}
+.colorsImgLP {
+  display: inline-block;
+  text-align: center;
+  height: 500px;
+  width: 500px;
+}
+.h1LP {
+  color: white;
+  text-align: center;
+  height: 40px;
+  margin-top: -30px;
+  font-size: 80px;
+  background-color: pink;
+}
+
+.opacLP {
+  background-color: rgba(66, 66, 66, 0.7);
+  filter: blur(5px;);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#containerLP {
+  height: 900px;
+  width: 100%;
+  position: absolute;
+}
+
+#colorsLP {
+  /*background-color: green;*/
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*background-image: url('http://i699.photobucket.com/albums/vv360/rockerxo28/FlashingColors.gif');*/
+  /*background-color: rgba(211, 211, 211, 0.5);*/
+  /*opacity: 0.5;*/
+  /*z-index: 0.5;*/
+/*}*/
+
+
 
 /*GP*/
+.navGP {
+  display: inline;
+}
+
+.headers {
+  color: white;
+  text-align: center;
+  height: 40px;
+  margin-top: -30px;
+  font-size: 80px;
+  /*background-color: pink;*/
+}
+
 .levelModal {
   visibility: hidden;
   /*z-index: 1;*/
@@ -202,7 +285,7 @@ label {
     margin: auto;
     font-size: 40px;
   }
-  img {
+  .allIconImgs {
     height: 30px;
     width: 30px;
   }

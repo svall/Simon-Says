@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Game</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
-  <script src="script.js" type="text/javascript"></script>
-  <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-</head>
-<body>
-  <div> <!-- wrapper for the body -->
+  <head>
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" charset="utf-8"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+  </head>
+  <body id="colorsLP">
+  <div class="opacLP"></div>
     <div>
-     <!-- links -->
+      <section id="containerLP">
+        <div>
+          <article>
+            <div>
+              <section class="forms">
+                <h1 class="h1LP">SIMON SAYS...</h1>
+                <button type="submit" class="buttonsLP" id="buttonLPSP" name="singlePlayerBtn">Single-Player</button>
+                <button type="submit" class="buttonsLP" id="buttonLPMP" name="multiPlayerBtn">Multi-Player</button>
+                <div id="formContainerLP"> <!-- for buttons with images, links to other pages -->
+                  <form id="singlePlayerForm" class="formsLP" name="singlePlayer" action="game.html" method="get" accept-charset="utf-8">
+                    <br><label>Player Name:<br>
+                      <input type="text" name="playerName" /><br>
+                    </label>
+                    <label>Select Game Mode:<br>
+                      <select name="modeOptions">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="extreme">Extreme</option>
+                      </select><br>
+                      <button type="submit" class="buttonsPlayLP">PLAY</button>
+                    </label>
+                  </form>
+                  <form id="multiPlayerForm" class="formsLP" name="multiPlayer" action="game.html" method="get" accept-charset="utf-8">
+                    <label>Player 1 Name:<br>
+                      <input type="text" name="player1name" /><br>
+                    </label>
+                    <label>Player 2 Name:<br>
+                      <input type="text" name="player2name" /><br>
+                    </label>
+                    <label>Select Game Mode:<br>
+                      <select name="modeOptions">
+                        <option value=""></option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="extreme">Extreme</option>
+                      </select><br>
+                      <button type="submit" class="buttonsPlayLP">PLAY</button>
+                    </label>
+                  </form>
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
-    <header id="headerLP" class="headers">
-      <h1 class="headers">SIMON SAYS...</h1>
-      <div>
-        <!-- <input> dropdown </input> -->
-        <!-- <img> next to dropdown -->
-        <!-- <a> sign in link </a> -->
-      </div>
-    </header>
-  </div>
-  <<button type="submit" class="buttonsLP" id="buttonLPSP" name="singlePlayerBtn">Single-Player</button>
-  <button type="submit" class="buttonsLP" id="buttonLPMP" name="multiPlayerBtn">Multi-Player</button>
-  <div id="formContainerLP"> <!-- for buttons with images, links to other pages -->
-    <form id="singlePlayerForm" class="formsLP" name="singlePlayer" action="game.html" method="get" accept-charset="utf-8">
-      <br><label>Player Name:<br>
-        <input type="text" name="playerName" /><br>
-      </label>
-      <label>Select Game Mode:<br>
-        <select name="modeOptions">
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="extreme">Extreme</option>
-        </select><br>
-        <button type="submit" class="buttonsPlayLP">PLAY</button>
-      </label>
-    </form>
-    <form id="multiPlayerForm" class="formsLP" name="multiPlayer" action="game.html" method="get" accept-charset="utf-8">
-      <label>Player 1 Name:<br>
-        <input type="text" name="player1name" /><br>
-      </label>
-      <label>Player 2 Name:<br>
-        <input type="text" name="player2name" /><br>
-      </label>
-      <label>Select Game Mode:<br>
-        <select name="modeOptions">
-          <option value=""></option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="extreme">Extreme</option>
-        </select><br>
-        <button type="submit" class="buttonsPlayLP">PLAY</button>
-      </label>
-    </form>
-  </div>
-</body>
+  </body>
 </html>

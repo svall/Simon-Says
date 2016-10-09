@@ -105,7 +105,6 @@ function randomColorSequence() {
       console.log(randNum);
       colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
       colorBoxes.eq(randNum).css('boxShadow', ' inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
-      // colorBoxes.eq(randNum).css('boxShadow', ' 0px 0px 40px 20px white');
       colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
       setTimeout (function() {
         $('.colorBox').css('boxShadow', '');
