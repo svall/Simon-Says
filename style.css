@@ -18,7 +18,7 @@ label {
   padding: 8px 0 0 8px;
 }
 
-/*LP*/
+/*Landing Page*/
 .headerLP {
   background-color: #0e1717;
   height: 124px;
@@ -44,6 +44,7 @@ label {
   font-size: 60px;
   text-decoration: none;
   color: white;
+  margin-left: 15%;
 }
 
 .loginButton {
@@ -140,7 +141,7 @@ select {
   display: none;
 }*/
 
-/*GP*/
+/*Game Page*/
 .navGP {
   display: inline;
 }
@@ -199,7 +200,7 @@ select {
   height: 95%;
   /*background-color: green;*/
 }
-/*Player info box on the right side of the game*/
+
 .containerAside {
   display: inline-block;
   /*background-color: lightgreen;*/
@@ -231,22 +232,24 @@ select {
   font-weight: bold;
   height: 20px;
 }
+
 #levelDisplay {
   text-align: center;
   color: red;
   height: 20px;
   padding-bottom: 10px;
 }
+
 .allButtonsGP {
   text-align: center;
 }
+
 .buttonsGP {
   font-size: 1.8rem;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-/*game area*/
 #containerMain {
   /*background-color: lightblue;*/
   display: inline-block;
@@ -285,11 +288,12 @@ select {
 }
 
 @media only screen and (max-width: 600px) {
-  /*LP*/
+  /*Landing Page*/
   .gameNameLP {
     display: inline-block;
     font-size: 30px;
     width: 200px;
+    margin-left: 20%
   }
   .containerHolder {
     margin-top: 30px;
@@ -344,7 +348,7 @@ select {
     font-size: 15px;
     margin-top: 5px;
   }
-  /*GP*/
+  /*Game Page*/
   #headerGP {
     display: block;
     height: 40px;

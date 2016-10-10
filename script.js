@@ -1,7 +1,8 @@
 // Susana Isaza - Simon Says
 
+// VARIABLES:
 
-// variables used to set up the board:
+// variables used to set up the board
 var modes = ['beginner', 'intermediate', 'extreme'];
 var size = [4, 9, 9];
 var colorsArray = ['red', 'green', 'lightblue', 'yellow', 'lightpurple', 'grey', 'pink', 'maroon', 'orange'];
@@ -29,7 +30,7 @@ var colorsPlayerBoxID = [];
 var colorsPlayer2 = [];
 var t;
 
-// holds player info for this game
+// holds player info for this game and score board
 var gameScore = {}; // holds current game stats
 var scoreBoard = []; // holds playerStats
 
@@ -58,15 +59,13 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
-
 // instructionsDisplay() displays the set of instruction to play the game
 function instructionsDisplay() {
   $('.instructionsModal').toggle();
   $('.colorBox').toggle();
 }
 
-
-// autoFill() adds values from landing form to corresponding place in game page
+// autoFill() adds values from landing page form to corresponding place in game page, saves info in variables used to set up the board
 function autoFill () {
   var formSelections = window.location.search.substring(1).split("&");
   var playerName = formSelections[0].split('=');
@@ -82,7 +81,7 @@ function autoFill () {
   }
 }
 
-// setBoard() creates the board, assigns random colors
+// setBoard() creates the board dyamically, the size depending on the Game Mode selected, also assigns random colors to each div
 function setBoard() {
   for (var i = 0; i < (boardSize); i++) {
     // console.log('startGameBtn working');
@@ -102,7 +101,8 @@ function setBoard() {
   randomColorSequence();
 }
 
-// randomColorSequence() displays the random combination of colors, with 1 sec delay from click
+// randomColorSequence() displays the random combination of colors (the sequence length depending on the level)
+// the combination is displayed with a delay from the START click, the speed depends on the Game Mode being played
 function randomColorSequence() {
   // console.log('click works');
   var a;
@@ -141,7 +141,7 @@ function randomColorSequence() {
   playerDelay();
 }
 
-// playerDelay() activates the hover and click events after the sequence is displayed
+// playerDelay() activates the hover and click events for the player after the sequence is displayed. Extreme Mode is faster.
 function playerDelay() {
   if ($('#modeOptions').text() === 'beginner' || $('#modeOptions').text() === 'intermediate') {
     setTimeout(lightBoxes, (sequenceLength + 1) * 1200);
@@ -150,7 +150,7 @@ function playerDelay() {
   }
 }
 
-// lightBoxes() changes opacity of boxes hovered over
+// lightBoxes() changes opacity of boxes hovered over, and sets back when off the div
 function lightBoxes() {
   $('.colorBox').mouseover(function(event) {
       // console.log('animation click works');
@@ -169,7 +169,8 @@ function lightBoxes() {
   $('.colorBox').on('click', playerSequenceInput);
 }
 
-// playerSequenceInput() saves the click inputs the player makes
+// playerSequenceInput() saves the id of the click inputs the player makes,
+// and changes them into single digits to compare with the random number displayed
 function playerSequenceInput(event) {
   // console.log('playerseq. works');
   switch (this.id) {
@@ -324,21 +325,7 @@ function createScoreBoard() {
   $('.finalScoreModal').text('TOP SCORES! Beginner: ' + topBeg + ', Intermediate: ' + topInt + ', Extreme: ' + topExt);
 }
 
-// showLevelPopup() displays the "Next Level" notice
-function showLevelPopup() {
-  $('.levelModal').css({
-    visibility: 'visible',
-    zIndex: '0.2'
-  });
-  setTimeout(function() {
-    $('.levelModal').css({
-      visibility: 'hidden',
-      zIndex: '1'
-    })}, 1000);
-  setTimeout(setBoard, 1000);
-}
-
-// resetSequence() clers board and resets the sequence arrays displayed and entered
+// resetSequence() clears board and resets the sequence arrays displayed and entered, also completes collors array
 function resetSequence() {
   // console.log('reset btn');
   colorsDisplayed = [];
@@ -356,7 +343,7 @@ function resetLevel() {
   sequenceLength = levelTimes.l1;
 }
 
-// nextLevel() moves the player to the next level sequence
+// nextLevel() moves the player to the next level sequence, if current level was correctly entered
 function nextLevel() {
   var level = parseInt($('#levelDisplay').text()); // level text
   // console.log(level);
@@ -366,7 +353,7 @@ function nextLevel() {
   sequenceIncrement();
 }
 
-// sequenceIncrement() increments each level by 2 the sequence that will desplay
+// sequenceIncrement() increments each level by 1 the sequence that will display
 function sequenceIncrement() {
   var level = parseInt($('#levelDisplay').text());
   switch(level) {
@@ -402,7 +389,21 @@ function sequenceIncrement() {
   }
 }
 
-// nextMode() moves player to next mode available when all levels are completed
+// showLevelPopup() displays the "Next Level" notice for 1 second
+function showLevelPopup() {
+  $('.levelModal').css({
+    visibility: 'visible',
+    zIndex: '0.2'
+  });
+  setTimeout(function() {
+    $('.levelModal').css({
+      visibility: 'hidden',
+      zIndex: '1'
+    })}, 1000);
+  setTimeout(setBoard, 1000);
+}
+
+// nextMode() moves player to next mode available when last level for the current Mode is completed
 function nextMode() {
   if (($('#levelDisplay').text() === '10') && ($('#modeOptions').text() === 'beginner')) {
     alert('GREAT GAME - TRY YOUR LUCK WITH MORE BOXES')
