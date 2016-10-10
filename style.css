@@ -284,7 +284,7 @@ select {
   color: white;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 600px) {
   /*LP*/
   .gameNameLP {
     display: inline-block;

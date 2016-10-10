@@ -5,19 +5,31 @@ Wireframe:
 - Beginner Level (2x2) - https://wireframe.cc/Ja94Mc
 - Intermediate & Extreme Level (3x3) - https://wireframe.cc/kKeST1
 
-Description:
-The game has the option to be single or double player. The game version can also be selected - beginner starts with four colors, intermediate with six and extreme with eight.
 
- Each game starts off by showing a small color combination that has to be entered in the same order it was shown (mouse click or arrow keys assigned), and in the same time it was displayed. If entered correctly, the next combination shown on the next level will add more combinations (the increment of combinations depending on the game version selected - beginner, intermediate, extreme). Each combination is presented in a shorter time than the previous level, and the player has to enter it in that same amount of time it was displayed or the game is over.
-
-Rules:
-If it is single-player, the purpose is to enter the combinations correctly in the time given, moving up levels until level 8. After level 8, the player would move to the next game version available (ex. if beginner, move to intermediate).
-If it is double-player, the players would select a version of the game to play. In turns, each payer would get a combination with the same difficulty level, and and the purpose would be to complete the combination in the time given. Both players would continue moving up levels until one of them fails to complete it.
-
-Technology:
-- HTML/CSS to crete the structure and appearance of the board, using a table format.
-- Javascript and JQuery will be used to give combinations and to analyze the ones entered by players.
-- Public repository: https://github.com/svall/Simon-Says
+Game Outline:
+- Landing Page: The player must enter his or her name and select a Game Mode to play. The Beginner mode has 4 colors (2x2 grid), Intermediate and Extreme have 9 colors (3x3 grid). Once name and mode are completed, the PLAY button will direct the player to the game.<br>
+- Game Page: The game displays a color sequence when the player clicks the START button. The player has to pay close attention and wait for the sequence to finish. The player then has to enter the same color combination in the same order to move to the next level. Each time the player successfully completes a level, the color sequence to be displayed increases by 1, until completing level 10. If all levels in a Game Mode are completed, the player moves on to the next Game Mode until completing the Extreme Mode (where colors are displayed twice as fast as in the Beginner and Intermediate Modes. If a combination is entered incorrectly, an alert will inform the player the game is over, and the player will have to start from level 1.<br>
+If a player wants to restart the game, clicking the “RESET” button will move back to Level 1 of that Game Mode.
+Each game saves the player name, score and last successful level they completed.
 
 
-Student included a readme file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
+Technology used:
+- Structure and Styling:
+HTML/CSS are used to crete the structure and styling of both landing and game pages. Images are added directly to the HTML structure to be displayed as icons and the initial image in the landing page.
+The grid in the game page is created dynamically when the START button is clicked. It is set up with flexbox.
+Media queries are set up for tablets at 600px screen.
+
+- Functionality:
+JQuery is used for the functionality of the game. It is used to manipulate the DOM to display the random color sequences, as well as store and compare them with the sequences entered by players.
+The main triggers for functionality are event listeners set up with button clicks, mouseover, and mouseout.
+The display sequences are controlled with setTimeout() methods with short display times.
+The opacity for each color box is manipulated using animate() to improve the visual display of each color during the sequence.
+The toggle() method is used to show and hide the scoreboard and instructions when clickin on the corresponding links.
+
+
+Current Issues:
+The score for each game is saved to the gameScore object. Each time gameScore is used, the object is pushed to the scoreBoard array.
+In order to only save one score per mode per player, a loop in the scoreBoard array contrasts the new score with any existing ones and replaces it if it is higher.
+The main issue that the scoreBoard array gets erased when the player leaves the page, either back to the landing page or reloads it.
+
+
