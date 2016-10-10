@@ -13,13 +13,13 @@ var levelTimes = {
   l1: 1,
   l2: 2,
   l3: 3,
-  l4: 1,
-  l5: 1,
-  l6: 1,
-  l7: 1,
-  l8: 1,
-  l9: 1,
-  l10: 1
+  l4: 4,
+  l5: 5,
+  l6: 6,
+  l7: 7,
+  l8: 8,
+  l9: 9,
+  l10: 10
   };
 var sequenceLength = levelTimes.l1;
 
