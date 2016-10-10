@@ -98,19 +98,36 @@ function setBoard() {
 function randomColorSequence() {
   // console.log('click works');
   var a;
-  for (var i = 1; i <= sequenceLength; i++) {
-    t = setTimeout (function() {
-      var colorBoxes = $('.colorBox');
-      var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
-      console.log(randNum);
-      colorBoxes.eq(randNum).animate({opacity: '1'}, 300);
-      colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
-      colorBoxes.eq(randNum).animate({opacity: '0.5'}, 300);
-      a = setTimeout (function() {
-        $('.colorBox').css('boxShadow', '');
-        }, 600);
-      colorsDisplayed.push(randNum);
-    }, 1200 * i);
+  if ($('#modeOptions').text() === 'beginner' || $('#modeOptions').text() === 'intermediate') {
+    for (var i = 1; i <= sequenceLength; i++) {
+      t = setTimeout (function() {
+        var colorBoxes = $('.colorBox');
+        var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
+        console.log(randNum);
+        colorBoxes.eq(randNum).animate({opacity: '1'}, 300);
+        colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
+        colorBoxes.eq(randNum).animate({opacity: '0.5'}, 300);
+        a = setTimeout (function() {
+          $('.colorBox').css('boxShadow', '');
+          }, 600);
+        colorsDisplayed.push(randNum);
+      }, 1200 * i);
+    }
+  } else {
+    for (var i = 1; i <= sequenceLength; i++) {
+      t = setTimeout (function() {
+        var colorBoxes = $('.colorBox');
+        var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
+        console.log(randNum);
+        colorBoxes.eq(randNum).animate({opacity: '1'}, 100);
+        colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
+        colorBoxes.eq(randNum).animate({opacity: '0.5'}, 100);
+        a = setTimeout (function() {
+          $('.colorBox').css('boxShadow', '');
+          }, 200);
+        colorsDisplayed.push(randNum);
+      }, 400 * i);
+    }
   }
   // console.log(colorsDisplayed);
   playerDelay();
@@ -118,7 +135,11 @@ function randomColorSequence() {
 
 // playerDelay() activates the hover and click events after the sequence is displayed
 function playerDelay() {
-  setTimeout(lightBoxes, (sequenceLength + 1) * 1000);
+  if ($('#modeOptions').text() === 'beginner' || $('#modeOptions').text() === 'intermediate') {
+    setTimeout(lightBoxes, (sequenceLength + 1) * 1200);
+  } else {
+    setTimeout(lightBoxes, (sequenceLength + 1) * 400);
+  }
 }
 
 // lightBoxes() changes opacity of boxes hovered over
