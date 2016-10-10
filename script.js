@@ -10,8 +10,8 @@ var boardSize;
 // level variables, number of color sequences displayed per level
 var levelTimes = {
   l1: 1,
-  l2: 1,
-  l3: 1,
+  l2: 2,
+  l3: 3,
   l4: 1,
   l5: 1,
   l6: 1,
@@ -78,11 +78,10 @@ function autoFill () {
 function setBoard() {
   for (var i = 0; i < (boardSize); i++) {
     // console.log('startGameBtn working');
-    $('#colorContainer').append('<div class="colorBox">COLOR' + (i) + '</div>');
+    $('#colorContainer').append('<div class="colorBox"></div>');
     $('.colorBox').eq(i).attr('id', 'box' + (i));
     var randNum = Math.floor(Math.random() * colorsArray.length) + 0;
     $('.colorBox').eq(i).attr('style', 'background-color: ' + colorsArray[randNum]);
-    // $('.colorBox').eq(i).attr('style', 'box-shadow: 0 0 0 0 white');
     colorsArray.splice(randNum,1); // takes out of the array the color assigned for no repetitions
     // console.log(colorsArray);
   }
@@ -98,19 +97,20 @@ function setBoard() {
 // randomColorSequence() displays the random combination of colors, with 1 sec delay from click
 function randomColorSequence() {
   // console.log('click works');
+  var a;
   for (var i = 1; i <= sequenceLength; i++) {
     t = setTimeout (function() {
       var colorBoxes = $('.colorBox');
       var randNum = Math.floor(Math.random() * colorBoxes.length) + 0; //rand# bet. 0-8
       console.log(randNum);
-      colorBoxes.eq(randNum).animate({opacity: '1'}, 500);
-      colorBoxes.eq(randNum).css('boxShadow', ' inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
-      colorBoxes.eq(randNum).animate({opacity: '0.5'}, 500);
-      setTimeout (function() {
+      colorBoxes.eq(randNum).animate({opacity: '1'}, 300);
+      colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
+      colorBoxes.eq(randNum).animate({opacity: '0.5'}, 300);
+      a = setTimeout (function() {
         $('.colorBox').css('boxShadow', '');
-        }, 1000);
+        }, 600);
       colorsDisplayed.push(randNum);
-    }, 1000 * i);
+    }, 1200 * i);
   }
   // console.log(colorsDisplayed);
   playerDelay();
@@ -251,9 +251,9 @@ function createScoreBoard() {
   var intS = 0;;
   var expS = 0;;
   // variables to populate the board:
-  var topBeg ='sfs';
-  var topInt = 'sdfsdf';
-  var topExt = 'sdfsdf';
+  var topBeg ='';
+  var topInt = '';
+  var topExt = '';
   for (var i = 0; i < scoreBoard.length; i++) {
     switch(scoreBoard[i].mode) {
       case 'beginner':
@@ -414,17 +414,13 @@ $('document').ready(function() {
   $('#buttonLPSP').on('click', stayOnSinglePlayer);
   $('#singlePlayerForm').on('mouseover', stayOnSPForm);
   $('#singlePlayerForm').on('mouseleave', leaveSinglePlayer);
-  // $('#buttonLPMP').on('mouseout', leaveSinglePlayer);
   $('#buttonLPMP').on('click', stayOnMultiPlayer);
   $('#multiPlayerForm').on('mouseover', stayOnMPForm);
   $('#multiPlayerForm').on('mouseout', leaveMultiPlayer);
-  // $('#buttonLPMP').on('mouseout', leaveMultiPlayer);
 
   // GAME PAGE:
   autoFill();
   $('#startGameBtn').on('click', setBoard);
-  // $('.colorBox').on('mouseover', popColors);
-  // $('.colorBox').on('click', playerSequenceInput);
   $('#resetGameBtn').on('click', resetSequence);
   $('#resetGameBtn').on('click', resetLevel);
   $('#starImg').on('click', createScoreBoard);
