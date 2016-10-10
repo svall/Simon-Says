@@ -20,11 +20,27 @@ label {
 
 /*LP*/
 .headerLP {
-  background-color: pink;
+  background-color: #0e1717;
+  height: 124px;
 }
 .logosLP {
   width: 50%;
   display: inline-block;
+}
+#homeImgLP {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 30px;
+}
+#infoImgLP {
+  margin-top: 20px;
+  margin-right: 40px;
+}
+.gameNameLP {
+  font-size: 60px;
+  text-decoration: none;
+  color: white;
+  /*padding-left: 20px;*/
 }
 .loginButton {
   width: 48%;
@@ -38,7 +54,8 @@ label {
 }
 .h3LP {
   color: white;
-  background-color: orange;
+  /*background-color: orange;*/
+  margin-top: 60px;
   font-size: 30px;
 }
 
@@ -50,9 +67,12 @@ label {
   align-items: center;
 }
 .signupContainerLP {
-  background-color: blue;
+  /*background-color: blue;*/
   display: inline-block;
+  text-align: center;
   width: 600px;
+  height: 400px;
+
 }
 .colorsImgLP {
   display: inline-block;
@@ -61,18 +81,19 @@ label {
   /*float: right;*/
 }
 
+
 /*main buttons*/
 .buttonsLP {
   border: 2px solid;
-  height: 90px;
+  height: 80px;
   width: 230px;
   font-size: 30px;
   padding: 10px;
   margin: 0;
 }
 .buttonsPlayLP {
-  height: 40px;
-  width: 70px;
+  height: 50px;
+  width: 80px;
   font-size: 20px;
   margin-top: 10px;
 }
@@ -87,18 +108,29 @@ label {
 }
 #singlePlayerForm {
   position: absolute;
+  margin-left: 13%;
   height: 100%;
   width: 100%;
   background-color: lightgreen;
   display: none;
 }
-#multiPlayerForm {
+
+.inputBox {
+  height: 20px;
+  width: 160px;
+  margin: 15px auto;
+}
+
+select {
+  font-size: 50px;
+}
+/*#multiPlayerForm {
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: lightblue;
   display: none;
-}
+}*/
 
 /*LP*/
 /*#headerLP {
