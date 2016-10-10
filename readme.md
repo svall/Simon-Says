@@ -3,7 +3,8 @@ Susana Isaza
 
 
 Sample landing page: https://www.webprofits.com.au/backlinks/
-Screenshot: images/LandingPageModel.png
+Screenshot:
+![alt tag](./images/LandingPageModel.png)
 
 Wireframe:
 - Beginner Level (2x2) - https://wireframe.cc/Ja94Mc
