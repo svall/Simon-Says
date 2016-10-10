@@ -6,16 +6,16 @@ body {
   background-color: black;
 }
 
+label {
+  color: white;
+}
+
 .allIconImgs {
   color: white;
   display: inline-block;
   height: 60px;
   width: 60px;
   padding: 8px 0 0 8px;
-}
-
-label {
-  color: white;
 }
 
 /*LP*/
@@ -40,7 +40,6 @@ label {
   font-size: 60px;
   text-decoration: none;
   color: white;
-  /*padding-left: 20px;*/
 }
 .loginButton {
   width: 48%;
@@ -78,9 +77,7 @@ label {
   display: inline-block;
   text-align: right;
   width:300px;
-  /*float: right;*/
 }
-
 
 /*main buttons*/
 .buttonsLP {
@@ -97,7 +94,6 @@ label {
   font-size: 20px;
   margin-top: 10px;
 }
-/*LP - form to select # of players*/
 #formContainerLP {
   height: 300px;
   width: 460px;
@@ -111,8 +107,9 @@ label {
   margin-left: 13%;
   height: 100%;
   width: 100%;
-  background-color: lightgreen;
+  background-color: #696969;
   display: none;
+  border: 2px solid white;
 }
 
 .inputBox {
@@ -131,51 +128,6 @@ select {
   background-color: lightblue;
   display: none;
 }*/
-
-/*LP*/
-/*#headerLP {
-  background-color: red;
-}
-.colorsImgLP {
-  display: inline-block;
-  text-align: center;
-  height: 500px;
-  width: 500px;
-}
-.h1LP {
-  color: white;
-  text-align: center;
-  height: 40px;
-  margin-top: -30px;
-  font-size: 80px;
-  background-color: pink;
-}
-
-.opacLP {
-  background-color: rgba(66, 66, 66, 0.7);
-  filter: blur(5px;);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
-#containerLP {
-  height: 900px;
-  width: 100%;
-  position: absolute;
-}
-
-#colorsLP {
-  /*background-color: green;*/
-  /*height: 100%;*/
-  /*width: 100%;*/
-  /*background-image: url('http://i699.photobucket.com/albums/vv360/rockerxo28/FlashingColors.gif');*/
-  /*background-color: rgba(211, 211, 211, 0.5);*/
-  /*opacity: 0.5;*/
-  /*z-index: 0.5;*/
-/*}*/
-
-
 
 /*GP*/
 .navGP {
@@ -310,7 +262,68 @@ select {
   color: white;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 620px) {
+  /*LP*/
+  .gameNameLP {
+    display: inline-block;
+    font-size: 30px;
+    width: 200px;
+  }
+  .containerHolder {
+    margin-top: 30px;
+    display: inline-block;
+  }
+  .signupContainerLP {
+    /*background-color: blue;*/
+    display: inline-block;
+    text-align: center;
+    width: 350px;
+    height: 200px;
+  }
+  .h3LP {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+  .colorsImgLP {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width:200px;
+  }
+  .buttonsLP {
+    height: 50px;
+    width: 150px;
+    font-size: 15px;
+  }
+  #formContainerLP {
+    height: 150px;
+    width: 250px;
+    position: relative;
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  #singlePlayerForm {
+    margin-left: 13%;
+    height: 190px;
+    background-color: #696969;
+  }
+  .inputBox {
+    height: 15px;
+    width: 120px;
+    margin: 8px auto;
+  }
+  select {
+    font-size: 50px;
+  }
+  .buttonsPlayLP {
+    height: 30px;
+    width: 50px;
+    font-size: 15px;
+    margin-top: 5px;
+  }
+
+  /*GP*/
   #headerGP {
     display: block;
     height: 40px;
