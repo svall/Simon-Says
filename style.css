@@ -170,7 +170,7 @@ select {
 .finalScoreModal {
   color: black;
   font-size: 40px;
-  background-color: red;
+  background-color: white;
   text-align: center;
   height: 350px;
   width: 300px;
@@ -178,6 +178,20 @@ select {
   right: 57%;
   position: absolute;
   display: none;
+}
+
+.instructionsModal {
+  color: black;
+  font-size: 20px;
+  background-color: white;
+  text-align: center;
+  height: 500px;
+  width: 550px;
+  top: 200px;
+  right: 50%;
+  position: absolute;
+  display: none;
+  padding: 5px;
 }
 
 .board {
@@ -362,14 +376,22 @@ select {
     font-size: 25px;
     width: 150px;
     height: 60px;
-    top: 110px;
+    top: 130px;
     right: 48%;
   }
   .finalScoreModal {
     font-size: 25px;
     width: 190px;
     height: 220px;
-    top: 110px;
+    top: 130px;
     right: 48%;
+  }
+  .instructionsModal {
+    font-size: 13px;
+    height: 390px;
+    width: 240px;
+    top: 130px;
+    right: 45%;
+    padding: 5px;
   }
 }

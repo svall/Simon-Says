@@ -58,6 +58,14 @@ function leaveMultiPlayer() {
 }
 
 // GAME PAGE:
+
+// instructionsDisplay() displays the set of instruction to play the game
+function instructionsDisplay() {
+  $('.instructionsModal').toggle();
+  $('.colorBox').toggle();
+}
+
+
 // autoFill() adds values from landing form to corresponding place in game page
 function autoFill () {
   var formSelections = window.location.search.substring(1).split("&");
@@ -411,7 +419,6 @@ function nextMode() {
     resetSequence();
     resetLevel();
     setBoard();
-    // timer(); // add timer to enter for extreme game
   }
   else if (($('#levelDisplay').text() === '10') && ($('#modeOptions').text() === 'extreme')) {
     alert('GAME MASTER')
@@ -420,11 +427,6 @@ function nextMode() {
     resetLevel();
   }
 }
-
-// timer() displays timer and gives a countdown time to enter the correct combination
-// function timer() {
-//   $('.displayTimer').show();
-// }
 
 
 // EVENTS:
@@ -444,5 +446,6 @@ $('document').ready(function() {
   $('#startGameBtn').on('click', setBoard);
   $('#resetGameBtn').on('click', resetSequence);
   $('#resetGameBtn').on('click', resetLevel);
+  $('#infoImg').on('click', instructionsDisplay);
   $('#starImg').on('click', createScoreBoard);
 });
