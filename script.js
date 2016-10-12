@@ -105,7 +105,6 @@ function setBoard() {
 // the combination is displayed with a delay from the START click, the speed depends on the Game Mode being played
 function randomColorSequence() {
   // console.log('click works');
-  var a;
   if ($('#modeOptions').text() === 'beginner' || $('#modeOptions').text() === 'intermediate') {
     for (var i = 1; i <= sequenceLength; i++) {
       t = setTimeout (function() {
@@ -115,9 +114,9 @@ function randomColorSequence() {
         colorBoxes.eq(randNum).animate({opacity: '1'}, 300);
         colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
         colorBoxes.eq(randNum).animate({opacity: '0.5'}, 300);
-        a = setTimeout (function() {
+        setTimeout (function() {
           $('.colorBox').css('boxShadow', '');
-          }, 600);
+        }, 600);
         colorsDisplayed.push(randNum);
       }, 1200 * i);
     }
@@ -130,9 +129,9 @@ function randomColorSequence() {
         colorBoxes.eq(randNum).animate({opacity: '1'}, 100);
         colorBoxes.eq(randNum).css('boxShadow', 'inset 0px 0px 20px 10px white, 0px 0px 20px 9px white');
         colorBoxes.eq(randNum).animate({opacity: '0.5'}, 100);
-        a = setTimeout (function() {
+        setTimeout (function() {
           $('.colorBox').css('boxShadow', '');
-          }, 200);
+        }, 200);
         colorsDisplayed.push(randNum);
       }, 400 * i);
     }
