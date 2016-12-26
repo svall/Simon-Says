@@ -1,6 +1,7 @@
 Project 1 - Simon Says
 Susana Isaza
 
+Host link: https://svall.github.io/Simon-Says/
 
 Sample landing page: https://www.webprofits.com.au/backlinks/
 Screenshot:
