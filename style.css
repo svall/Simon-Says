@@ -85,7 +85,8 @@ label {
 .colorsImgLP {
   display: inline-block;
   text-align: right;
-  width:300px;
+  width: 550px;
+  margin-left: -150px;
 }
 
 .buttonsLP {
